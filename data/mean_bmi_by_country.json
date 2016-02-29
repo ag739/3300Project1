@@ -1,0 +1,770 @@
+[
+  {
+    "Country": "Afghanistan",
+    "BMI": 21.2
+  },
+  {
+    "Country": "Albania",
+    "BMI": 25.9
+  },
+  {
+    "Country": "Algeria",
+    "BMI": 25.9
+  },
+  {
+    "Country": "Andorra",
+    "BMI": 27.3
+  },
+  {
+    "Country": "Angola",
+    "BMI": 23.6
+  },
+  {
+    "Country": "Antigua and Barbuda",
+    "BMI": 27.9
+  },
+  {
+    "Country": "Argentina",
+    "BMI": 27.2
+  },
+  {
+    "Country": "Armenia",
+    "BMI": 26.3
+  },
+  {
+    "Country": "Australia",
+    "BMI": 26.9
+  },
+  {
+    "Country": "Austria",
+    "BMI": 25.3
+  },
+  {
+    "Country": "Azerbaijan",
+    "BMI": 26.7
+  },
+  {
+    "Country": "Bahamas",
+    "BMI": 28.4
+  },
+  {
+    "Country": "Bahrain",
+    "BMI": 27.8
+  },
+  {
+    "Country": "Bangladesh",
+    "BMI": 20.6
+  },
+  {
+    "Country": "Barbados",
+    "BMI": 28.2
+  },
+  {
+    "Country": "Belarus",
+    "BMI": 26.4
+  },
+  {
+    "Country": "Belgium",
+    "BMI": 25.4
+  },
+  {
+    "Country": "Belize",
+    "BMI": 28.4
+  },
+  {
+    "Country": "Benin",
+    "BMI": 23.1
+  },
+  {
+    "Country": "Bhutan",
+    "BMI": 23.3
+  },
+  {
+    "Country": "Bolivia (Plurinational State of)",
+    "BMI": 25.5
+  },
+  {
+    "Country": "Bosnia and Herzegovina",
+    "BMI": 26
+  },
+  {
+    "Country": "Botswana",
+    "BMI": 24.4
+  },
+  {
+    "Country": "Brazil",
+    "BMI": 25.6
+  },
+  {
+    "Country": "Brunei Darussalam",
+    "BMI": 26
+  },
+  {
+    "Country": "Bulgaria",
+    "BMI": 25.8
+  },
+  {
+    "Country": "Burkina Faso",
+    "BMI": 21.8
+  },
+  {
+    "Country": "Burundi",
+    "BMI": 20.7
+  },
+  {
+    "Country": "Côte d'Ivoire",
+    "BMI": 23.4
+  },
+  {
+    "Country": "Cabo Verde",
+    "BMI": 24.3
+  },
+  {
+    "Country": "Cambodia",
+    "BMI": 21.5
+  },
+  {
+    "Country": "Cameroon",
+    "BMI": 24.2
+  },
+  {
+    "Country": "Canada",
+    "BMI": 27
+  },
+  {
+    "Country": "Central African Republic",
+    "BMI": 22.2
+  },
+  {
+    "Country": "Chad",
+    "BMI": 22
+  },
+  {
+    "Country": "Chile",
+    "BMI": 27.5
+  },
+  {
+    "Country": "China",
+    "BMI": 23.4
+  },
+  {
+    "Country": "Colombia",
+    "BMI": 25.6
+  },
+  {
+    "Country": "Comoros",
+    "BMI": 23.8
+  },
+  {
+    "Country": "Congo",
+    "BMI": 23
+  },
+  {
+    "Country": "Cook Islands",
+    "BMI": 32
+  },
+  {
+    "Country": "Costa Rica",
+    "BMI": 26.5
+  },
+  {
+    "Country": "Croatia",
+    "BMI": 25.3
+  },
+  {
+    "Country": "Cuba",
+    "BMI": 25.7
+  },
+  {
+    "Country": "Cyprus",
+    "BMI": 26.8
+  },
+  {
+    "Country": "Czech Republic",
+    "BMI": 26.8
+  },
+  {
+    "Country": "Democratic People's Republic of Korea",
+    "BMI": 21.8
+  },
+  {
+    "Country": "Democratic Republic of the Congo",
+    "BMI": 21.9
+  },
+  {
+    "Country": "Denmark",
+    "BMI": 25.1
+  },
+  {
+    "Country": "Djibouti",
+    "BMI": 23.2
+  },
+  {
+    "Country": "Dominica",
+    "BMI": 26.5
+  },
+  {
+    "Country": "Dominican Republic",
+    "BMI": 26.2
+  },
+  {
+    "Country": "Ecuador",
+    "BMI": 26.6
+  },
+  {
+    "Country": "Egypt",
+    "BMI": 28.7
+  },
+  {
+    "Country": "El Salvador",
+    "BMI": 27
+  },
+  {
+    "Country": "Equatorial Guinea",
+    "BMI": 25.1
+  },
+  {
+    "Country": "Eritrea",
+    "BMI": 20.5
+  },
+  {
+    "Country": "Estonia",
+    "BMI": 25.4
+  },
+  {
+    "Country": "Ethiopia",
+    "BMI": 20.3
+  },
+  {
+    "Country": "Fiji",
+    "BMI": 27.1
+  },
+  {
+    "Country": "Finland",
+    "BMI": 25.9
+  },
+  {
+    "Country": "France",
+    "BMI": 25.2
+  },
+  {
+    "Country": "Gabon",
+    "BMI": 25.1
+  },
+  {
+    "Country": "Gambia",
+    "BMI": 23.5
+  },
+  {
+    "Country": "Georgia",
+    "BMI": 26.8
+  },
+  {
+    "Country": "Germany",
+    "BMI": 26.1
+  },
+  {
+    "Country": "Ghana",
+    "BMI": 23.8
+  },
+  {
+    "Country": "Greece",
+    "BMI": 27.3
+  },
+  {
+    "Country": "Grenada",
+    "BMI": 26.4
+  },
+  {
+    "Country": "Guatemala",
+    "BMI": 26.1
+  },
+  {
+    "Country": "Guinea",
+    "BMI": 22.5
+  },
+  {
+    "Country": "Guinea-Bissau",
+    "BMI": 22.8
+  },
+  {
+    "Country": "Guyana",
+    "BMI": 25.8
+  },
+  {
+    "Country": "Haiti",
+    "BMI": 23.6
+  },
+  {
+    "Country": "Honduras",
+    "BMI": 26
+  },
+  {
+    "Country": "Hungary",
+    "BMI": 26.2
+  },
+  {
+    "Country": "Iceland",
+    "BMI": 25.9
+  },
+  {
+    "Country": "India",
+    "BMI": 21.6
+  },
+  {
+    "Country": "Indonesia",
+    "BMI": 22.5
+  },
+  {
+    "Country": "Iran (Islamic Republic of)",
+    "BMI": 25.9
+  },
+  {
+    "Country": "Iraq",
+    "BMI": 27.5
+  },
+  {
+    "Country": "Ireland",
+    "BMI": 27.2
+  },
+  {
+    "Country": "Israel",
+    "BMI": 26.1
+  },
+  {
+    "Country": "Italy",
+    "BMI": 25.9
+  },
+  {
+    "Country": "Jamaica",
+    "BMI": 26.9
+  },
+  {
+    "Country": "Japan",
+    "BMI": 22.6
+  },
+  {
+    "Country": "Jordan",
+    "BMI": 28.6
+  },
+  {
+    "Country": "Kazakhstan",
+    "BMI": 27
+  },
+  {
+    "Country": "Kenya",
+    "BMI": 22.6
+  },
+  {
+    "Country": "Kiribati",
+    "BMI": 29.4
+  },
+  {
+    "Country": "Kuwait",
+    "BMI": 29.5
+  },
+  {
+    "Country": "Kyrgyzstan",
+    "BMI": 25.8
+  },
+  {
+    "Country": "Lao People's Democratic Republic",
+    "BMI": 22.1
+  },
+  {
+    "Country": "Latvia",
+    "BMI": 25.7
+  },
+  {
+    "Country": "Lebanon",
+    "BMI": 27.3
+  },
+  {
+    "Country": "Lesotho",
+    "BMI": 24.6
+  },
+  {
+    "Country": "Liberia",
+    "BMI": 23.7
+  },
+  {
+    "Country": "Libya",
+    "BMI": 28
+  },
+  {
+    "Country": "Lithuania",
+    "BMI": 26.4
+  },
+  {
+    "Country": "Luxembourg",
+    "BMI": 26.4
+  },
+  {
+    "Country": "Madagascar",
+    "BMI": 20.9
+  },
+  {
+    "Country": "Malawi",
+    "BMI": 22.5
+  },
+  {
+    "Country": "Malaysia",
+    "BMI": 25
+  },
+  {
+    "Country": "Maldives",
+    "BMI": 24.8
+  },
+  {
+    "Country": "Mali",
+    "BMI": 22.4
+  },
+  {
+    "Country": "Malta",
+    "BMI": 27.1
+  },
+  {
+    "Country": "Marshall Islands",
+    "BMI": 29.1
+  },
+  {
+    "Country": "Mauritania",
+    "BMI": 24.5
+  },
+  {
+    "Country": "Mauritius",
+    "BMI": 25.3
+  },
+  {
+    "Country": "Mexico",
+    "BMI": 27.8
+  },
+  {
+    "Country": "Monaco",
+    "BMI": 29.2
+  },
+  {
+    "Country": "Mongolia",
+    "BMI": 25.4
+  },
+  {
+    "Country": "Montenegro",
+    "BMI": 25.9
+  },
+  {
+    "Country": "Morocco",
+    "BMI": 25.2
+  },
+  {
+    "Country": "Mozambique",
+    "BMI": 22.1
+  },
+  {
+    "Country": "Myanmar",
+    "BMI": 22.3
+  },
+  {
+    "Country": "Namibia",
+    "BMI": 23.9
+  },
+  {
+    "Country": "Nauru",
+    "BMI": 32.6
+  },
+  {
+    "Country": "Nepal",
+    "BMI": 21.7
+  },
+  {
+    "Country": "Netherlands",
+    "BMI": 25.3
+  },
+  {
+    "Country": "New Zealand",
+    "BMI": 27.6
+  },
+  {
+    "Country": "Nicaragua",
+    "BMI": 26.6
+  },
+  {
+    "Country": "Niger",
+    "BMI": 21.5
+  },
+  {
+    "Country": "Nigeria",
+    "BMI": 23.1
+  },
+  {
+    "Country": "Niue",
+    "BMI": 32
+  },
+  {
+    "Country": "Norway",
+    "BMI": 25.9
+  },
+  {
+    "Country": "Oman",
+    "BMI": 26.5
+  },
+  {
+    "Country": "Pakistan",
+    "BMI": 23.4
+  },
+  {
+    "Country": "Palau",
+    "BMI": 29.4
+  },
+  {
+    "Country": "Panama",
+    "BMI": 26.6
+  },
+  {
+    "Country": "Papua New Guinea",
+    "BMI": 25
+  },
+  {
+    "Country": "Paraguay",
+    "BMI": 25.4
+  },
+  {
+    "Country": "Peru",
+    "BMI": 25.9
+  },
+  {
+    "Country": "Philippines",
+    "BMI": 22.9
+  },
+  {
+    "Country": "Poland",
+    "BMI": 26.1
+  },
+  {
+    "Country": "Portugal",
+    "BMI": 26.1
+  },
+  {
+    "Country": "Qatar",
+    "BMI": 28.6
+  },
+  {
+    "Country": "Republic of Korea",
+    "BMI": 23.6
+  },
+  {
+    "Country": "Republic of Moldova",
+    "BMI": 26.5
+  },
+  {
+    "Country": "Romania",
+    "BMI": 25.2
+  },
+  {
+    "Country": "Russian Federation",
+    "BMI": 26.2
+  },
+  {
+    "Country": "Rwanda",
+    "BMI": 21.7
+  },
+  {
+    "Country": "Saint Kitts and Nevis",
+    "BMI": 29.2
+  },
+  {
+    "Country": "Saint Lucia",
+    "BMI": 28.8
+  },
+  {
+    "Country": "Saint Vincent and the Grenadines",
+    "BMI": 26.8
+  },
+  {
+    "Country": "San Marino",
+    "BMI": 31.4
+  },
+  {
+    "Country": "Sao Tome and Principe",
+    "BMI": 24.4
+  },
+  {
+    "Country": "Saudi Arabia",
+    "BMI": 28.1
+  },
+  {
+    "Country": "Senegal",
+    "BMI": 22.7
+  },
+  {
+    "Country": "Serbia",
+    "BMI": 25.7
+  },
+  {
+    "Country": "Seychelles",
+    "BMI": 26.4
+  },
+  {
+    "Country": "Sierra Leone",
+    "BMI": 22.5
+  },
+  {
+    "Country": "Singapore",
+    "BMI": 23.6
+  },
+  {
+    "Country": "Slovakia",
+    "BMI": 26.3
+  },
+  {
+    "Country": "Slovenia",
+    "BMI": 26.7
+  },
+  {
+    "Country": "Solomon Islands",
+    "BMI": 25.4
+  },
+  {
+    "Country": "Somalia",
+    "BMI": 21.7
+  },
+  {
+    "Country": "South Africa",
+    "BMI": 26.9
+  },
+  {
+    "Country": "South Sudan",
+    "BMI": 24.9
+  },
+  {
+    "Country": "Spain",
+    "BMI": 26.6
+  },
+  {
+    "Country": "Sri Lanka",
+    "BMI": 22.5
+  },
+  {
+    "Country": "Sudan",
+    "BMI": 24.9
+  },
+  {
+    "Country": "Suriname",
+    "BMI": 26.8
+  },
+  {
+    "Country": "Swaziland",
+    "BMI": 26.2
+  },
+  {
+    "Country": "Sweden",
+    "BMI": 25.6
+  },
+  {
+    "Country": "Switzerland",
+    "BMI": 25.1
+  },
+  {
+    "Country": "Syrian Arab Republic",
+    "BMI": 27.7
+  },
+  {
+    "Country": "Tajikistan",
+    "BMI": 24.9
+  },
+  {
+    "Country": "Thailand",
+    "BMI": 23.8
+  },
+  {
+    "Country": "The former Yugoslav republic of Macedonia",
+    "BMI": 25.7
+  },
+  {
+    "Country": "Timor-Leste",
+    "BMI": 20.9
+  },
+  {
+    "Country": "Togo",
+    "BMI": 22.9
+  },
+  {
+    "Country": "Tonga",
+    "BMI": 31.8
+  },
+  {
+    "Country": "Trinidad and Tobago",
+    "BMI": 28
+  },
+  {
+    "Country": "Tunisia",
+    "BMI": 26.3
+  },
+  {
+    "Country": "Turkey",
+    "BMI": 27.5
+  },
+  {
+    "Country": "Turkmenistan",
+    "BMI": 25.8
+  },
+  {
+    "Country": "Tuvalu",
+    "BMI": 29.1
+  },
+  {
+    "Country": "Uganda",
+    "BMI": 21.7
+  },
+  {
+    "Country": "Ukraine",
+    "BMI": 25.9
+  },
+  {
+    "Country": "United Arab Emirates",
+    "BMI": 28.6
+  },
+  {
+    "Country": "United Kingdom of Great Britain and Northern Ireland",
+    "BMI": 27
+  },
+  {
+    "Country": "United Republic of Tanzania",
+    "BMI": 22.8
+  },
+  {
+    "Country": "United States of America",
+    "BMI": 28.5
+  },
+  {
+    "Country": "Uruguay",
+    "BMI": 26.4
+  },
+  {
+    "Country": "Uzbekistan",
+    "BMI": 25.6
+  },
+  {
+    "Country": "Vanuatu",
+    "BMI": 26
+  },
+  {
+    "Country": "Venezuela (Bolivarian Republic of)",
+    "BMI": 27
+  },
+  {
+    "Country": "Viet Nam",
+    "BMI": 21.1
+  },
+  {
+    "Country": "Yemen",
+    "BMI": 25.5
+  },
+  {
+    "Country": "Zambia",
+    "BMI": 22.3
+  },
+  {
+    "Country": "Zimbabwe",
+    "BMI": 23.3
+  }
+]
