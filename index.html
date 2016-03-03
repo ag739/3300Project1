@@ -13,11 +13,16 @@
 			/*Creating x & y scale functions that map data to SVG coordinates*/
 			var xscale = d3.scale.linear().range([125, 775]);
 			var yscale = d3.scale.linear().range([50, 450]);
+
+			/* Creating shapes */
+			//Data
+
 			//Container
 			var svg_container = d3.select("#" + divID).append("svg")
 							.attr("width", 800)
 							.attr("height", 650);
 							// .style("border", " 1px solid #ccc");
+
 			/*Add d3 axes */
 			var xaxis = d3.svg.axis().scale(xscale)
 						.orient("bottom")
@@ -48,7 +53,6 @@
 							.text(divID)
 							.style("font-size", 25)
 							.style("fill","#80c1ff");
-		}
 	</script>
 
 	<title> INFO 3300 Project 1</title>
@@ -62,6 +66,7 @@
 
 </head>
 <body>
+<<<<<<< HEAD
 	<h1>Food Intake by Country</h1>
 	<div id = "Grains">
 		<img src="img/grains.png" alt="FoodPyramid-Grains">
@@ -96,6 +101,11 @@
 	<div id = "BMI">
 		<!-- MAP -->
 	</div>
+=======
+	<script>
+		
+	</script>
+>>>>>>> 867fdb3ac3288382c4788ed4fc3f0f63ef2b72a6
 
 </body>
 </html>
