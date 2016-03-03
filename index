@@ -52,7 +52,7 @@
 		svg_container.append("text")
 						.attr("x", 50).attr("y",80)
 						.style("text-anchor", "middle")
-						.text("Ingrediant")
+						.text("Intake (kcal)")
 						.style("font-size", 14);
 		svg_container.append("text")
 						.attr("x", 450).attr("y",30)
