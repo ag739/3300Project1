@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Project 1: Map</title>
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<script src="http://d3js.org/topojson.v1.min.js"></script>
+	<script src="http://d3js.org/d3.geo.projection.v0.min.js"></script>
+	<style type="text/css">
+		svg { border: solid black 1px; }
+	</style>
+</head>
+<body>
+
+	<div id="map"></div>
+	<script>
+		//legend
+		// var legend_width = 200,
+		// legend_height = 20;
+		// var svg2 = d3.select("#map").append("svg")
+		// 	.attr("width", legend_width)
+		// 	.attr("height", legend_height);
+		// svg2.append("rect")
+		// 	.style("stroke", "#000")
+		// 	.style("fill", "red")
+		// 	.attr("x", 0)
+		// 	.attr("y", 0);
+
+		//map
+		var map_width = 960,
+    	map_height = 500;
+		var projection = d3.geo.equirectangular();
+		var path = d3.geo.path().projection(projection);
+		var svg = d3.select("#map").append("svg")
+    		.attr("width", map_width)
+    		.attr("height", map_height);
+		var g = svg.append("g");
+		// g.append("rect")
+		// 	.style("stroke", "#000")
+		// 	.style("fill", "red")
+		// 	.attr("x", 0)
+		// 	.attr("y", 0);
+
+		var worldObjects;
+		d3.json("world-50m.json", function(error, world) {
+			worldObjects = world;
+		if (error) { console.log(error); }
+		var countries = topojson.feature(world, world.objects.countries).features;
+		countries.forEach(function (country) {
+			g.append("path").attr("d", path(country))
+			.style("fill", "#ccc")
+			.style("stroke", "#888");
+		});
+
+		//legend
+		// g.append("rect")
+		// 	.style("stroke", "#000")
+		// 	.style("fill", "red")
+		// 	.attr("x", 0)
+		// 	.attr("y", 0);
+
+	
+	// We can attach events to SVG elements.
+	//  When we map data elements to svg elements,
+	//  we can then define behaviors without specifying
+	//  a particular country. 
+	g.selectAll("path").data(countries)
+	.on("mouseover", function (country) {
+		console.log(country.id);
+	});
+	
+});
+// The .json() function returns immediately, without
+//  waiting for the response. But it spins off a separate
+//  thread that waits for the response to come back, and
+//  then executes the function that we gave it.
+console.log("after json");
+</script>
+</body>
+</html>
