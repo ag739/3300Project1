@@ -5,25 +5,919 @@
 	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 	<script src="http://d3js.org/topojson.v1.min.js"></script>
 	<script src="http://d3js.org/d3.geo.projection.v0.min.js"></script>
+	<script src="data/mean_bmi_by_country.js"></script>
 	<style type="text/css">
-		svg { border: solid black 1px; }
+		/*svg { 
+			border: solid black 1px;
+		}*/
+		#legend {
+			font-family: sans-serif;
+			font-size: 12px;
+		}
 	</style>
 </head>
 <body>
-
+	<h3>Mean BMI (kg/m2) for 18+ Year Olds in 2010</h3>
 	<div id="map"></div>
+	<div id="legend"></div>
 	<script>
+		//bmi data
+var bmi_dataset = [
+  {
+    "Country": "AFG",
+    "BMI": 21.2
+  },
+  {
+    "Country": "ALB",
+    "BMI": 25.9
+  },
+  {
+    "Country": "DZA",
+    "BMI": 25.9
+  },
+  {
+    "Country": "AND",
+    "BMI": 27.3
+  },
+  {
+    "Country": "AGO",
+    "BMI": 23.6
+  },
+  {
+    "Country": "ATG",
+    "BMI": 27.9
+  },
+  {
+    "Country": "ARG",
+    "BMI": 27.2
+  },
+  {
+    "Country": "ARM",
+    "BMI": 26.3
+  },
+  {
+    "Country": "AUS",
+    "BMI": 26.9
+  },
+  {
+    "Country": "AUT",
+    "BMI": 25.3
+  },
+  {
+    "Country": "AZE",
+    "BMI": 26.7
+  },
+  {
+    "Country": "BHS",
+    "BMI": 28.4
+  },
+  {
+    "Country": "BHR",
+    "BMI": 27.8
+  },
+  {
+    "Country": "BGD",
+    "BMI": 20.6
+  },
+  {
+    "Country": "BRB",
+    "BMI": 28.2
+  },
+  {
+    "Country": "BLR",
+    "BMI": 26.4
+  },
+  {
+    "Country": "BEL",
+    "BMI": 25.4
+  },
+  {
+    "Country": "BLZ",
+    "BMI": 28.4
+  },
+  {
+    "Country": "BEN",
+    "BMI": 23.1
+  },
+  {
+    "Country": "BTN",
+    "BMI": 23.3
+  },
+  {
+    "Country": "BOL",
+    "BMI": 25.5
+  },
+  {
+    "Country": "BIH",
+    "BMI": 26
+  },
+  {
+    "Country": "BWA",
+    "BMI": 24.4
+  },
+  {
+    "Country": "BRA",
+    "BMI": 25.6
+  },
+  {
+    "Country": "BRN",
+    "BMI": 26
+  },
+  {
+    "Country": "BGR",
+    "BMI": 25.8
+  },
+  {
+    "Country": "BFA",
+    "BMI": 21.8
+  },
+  {
+    "Country": "BDI",
+    "BMI": 20.7
+  },
+  {
+    "Country": "CIV",
+    "BMI": 23.4
+  },
+  {
+    "Country": "CPV",
+    "BMI": 24.3
+  },
+  {
+    "Country": "KHM",
+    "BMI": 21.5
+  },
+  {
+    "Country": "CMR",
+    "BMI": 24.2
+  },
+  {
+    "Country": "CAN",
+    "BMI": 27
+  },
+  {
+    "Country": "CAF",
+    "BMI": 22.2
+  },
+  {
+    "Country": "TCD",
+    "BMI": 22
+  },
+  {
+    "Country": "Chile",
+    "BMI": 27.5
+  },
+  {
+    "Country": "CHL",
+    "BMI": 23.4
+  },
+  {
+    "Country": "COL",
+    "BMI": 25.6
+  },
+  {
+    "Country": "COM",
+    "BMI": 23.8
+  },
+  {
+    "Country": "COG",
+    "BMI": 23
+  },
+  {
+    "Country": "COK",
+    "BMI": 32
+  },
+  {
+    "Country": "CRI",
+    "BMI": 26.5
+  },
+  {
+    "Country": "HRV",
+    "BMI": 25.3
+  },
+  {
+    "Country": "CUB",
+    "BMI": 25.7
+  },
+  {
+    "Country": "CYP",
+    "BMI": 26.8
+  },
+  {
+    "Country": "CZE",
+    "BMI": 26.8
+  },
+  {
+    "Country": "PRK",
+    "BMI": 21.8
+  },
+  {
+    "Country": "COD",
+    "BMI": 21.9
+  },
+  {
+    "Country": "DNK",
+    "BMI": 25.1
+  },
+  {
+    "Country": "DJI",
+    "BMI": 23.2
+  },
+  {
+    "Country": "DMA",
+    "BMI": 26.5
+  },
+  {
+    "Country": "DOM",
+    "BMI": 26.2
+  },
+  {
+    "Country": "ECU",
+    "BMI": 26.6
+  },
+  {
+    "Country": "EGY",
+    "BMI": 28.7
+  },
+  {
+    "Country": "SLV",
+    "BMI": 27
+  },
+  {
+    "Country": "GNQ",
+    "BMI": 25.1
+  },
+  {
+    "Country": "ERI",
+    "BMI": 20.5
+  },
+  {
+    "Country": "EST",
+    "BMI": 25.4
+  },
+  {
+    "Country": "ETH",
+    "BMI": 20.3
+  },
+  {
+    "Country": "FJI",
+    "BMI": 27.1
+  },
+  {
+    "Country": "FIN",
+    "BMI": 25.9
+  },
+  {
+    "Country": "FRA",
+    "BMI": 25.2
+  },
+  {
+    "Country": "GAB",
+    "BMI": 25.1
+  },
+  {
+    "Country": "GMB",
+    "BMI": 23.5
+  },
+  {
+    "Country": "GEO",
+    "BMI": 26.8
+  },
+  {
+    "Country": "DEU",
+    "BMI": 26.1
+  },
+  {
+    "Country": "GHA",
+    "BMI": 23.8
+  },
+  {
+    "Country": "GRC",
+    "BMI": 27.3
+  },
+  {
+    "Country": "GRD",
+    "BMI": 26.4
+  },
+  {
+    "Country": "GTM",
+    "BMI": 26.1
+  },
+  {
+    "Country": "GIN",
+    "BMI": 22.5
+  },
+  {
+    "Country": "GNB",
+    "BMI": 22.8
+  },
+  {
+    "Country": "GUY",
+    "BMI": 25.8
+  },
+  {
+    "Country": "HTI",
+    "BMI": 23.6
+  },
+  {
+    "Country": "HND",
+    "BMI": 26
+  },
+  {
+    "Country": "HUN",
+    "BMI": 26.2
+  },
+  {
+    "Country": "ISL",
+    "BMI": 25.9
+  },
+  {
+    "Country": "IND",
+    "BMI": 21.6
+  },
+  {
+    "Country": "IDN",
+    "BMI": 22.5
+  },
+  {
+    "Country": "IRN",
+    "BMI": 25.9
+  },
+  {
+    "Country": "IRQ",
+    "BMI": 27.5
+  },
+  {
+    "Country": "IRL",
+    "BMI": 27.2
+  },
+  {
+    "Country": "ISR",
+    "BMI": 26.1
+  },
+  {
+    "Country": "ITA",
+    "BMI": 25.9
+  },
+  {
+    "Country": "JAM",
+    "BMI": 26.9
+  },
+  {
+    "Country": "JPN",
+    "BMI": 22.6
+  },
+  {
+    "Country": "JOR",
+    "BMI": 28.6
+  },
+  {
+    "Country": "KAZ",
+    "BMI": 27
+  },
+  {
+    "Country": "KEN",
+    "BMI": 22.6
+  },
+  {
+    "Country": "KIR",
+    "BMI": 29.4
+  },
+  {
+    "Country": "KWT",
+    "BMI": 29.5
+  },
+  {
+    "Country": "KGZ",
+    "BMI": 25.8
+  },
+  {
+    "Country": "LAO",
+    "BMI": 22.1
+  },
+  {
+    "Country": "LVA",
+    "BMI": 25.7
+  },
+  {
+    "Country": "LBN",
+    "BMI": 27.3
+  },
+  {
+    "Country": "LSO",
+    "BMI": 24.6
+  },
+  {
+    "Country": "LBR",
+    "BMI": 23.7
+  },
+  {
+    "Country": "LBY",
+    "BMI": 28
+  },
+  {
+    "Country": "LTU",
+    "BMI": 26.4
+  },
+  {
+    "Country": "LUX",
+    "BMI": 26.4
+  },
+  {
+    "Country": "MDG",
+    "BMI": 20.9
+  },
+  {
+    "Country": "MWI",
+    "BMI": 22.5
+  },
+  {
+    "Country": "MYS",
+    "BMI": 25
+  },
+  {
+    "Country": "MDV",
+    "BMI": 24.8
+  },
+  {
+    "Country": "MLI",
+    "BMI": 22.4
+  },
+  {
+    "Country": "MLT",
+    "BMI": 27.1
+  },
+  {
+    "Country": "MHL",
+    "BMI": 29.1
+  },
+  {
+    "Country": "MRT",
+    "BMI": 24.5
+  },
+  {
+    "Country": "MUS",
+    "BMI": 25.3
+  },
+  {
+    "Country": "MEX",
+    "BMI": 27.8
+  },
+  {
+    "Country": "MCO",
+    "BMI": 29.2
+  },
+  {
+    "Country": "MNG",
+    "BMI": 25.4
+  },
+  {
+    "Country": "MNE",
+    "BMI": 25.9
+  },
+  {
+    "Country": "MAR",
+    "BMI": 25.2
+  },
+  {
+    "Country": "MOZ",
+    "BMI": 22.1
+  },
+  {
+    "Country": "MMR",
+    "BMI": 22.3
+  },
+  {
+    "Country": "NAM",
+    "BMI": 23.9
+  },
+  {
+    "Country": "NRU",
+    "BMI": 32.6
+  },
+  {
+    "Country": "NPL",
+    "BMI": 21.7
+  },
+  {
+    "Country": "NLD",
+    "BMI": 25.3
+  },
+  {
+    "Country": "NZL",
+    "BMI": 27.6
+  },
+  {
+    "Country": "NIC",
+    "BMI": 26.6
+  },
+  {
+    "Country": "NER",
+    "BMI": 21.5
+  },
+  {
+    "Country": "NGA",
+    "BMI": 23.1
+  },
+  {
+    "Country": "NIU",
+    "BMI": 32
+  },
+  {
+    "Country": "NOR",
+    "BMI": 25.9
+  },
+  {
+    "Country": "OMN",
+    "BMI": 26.5
+  },
+  {
+    "Country": "PAK",
+    "BMI": 23.4
+  },
+  {
+    "Country": "PLW",
+    "BMI": 29.4
+  },
+  {
+    "Country": "PAN",
+    "BMI": 26.6
+  },
+  {
+    "Country": "PNG",
+    "BMI": 25
+  },
+  {
+    "Country": "PRY",
+    "BMI": 25.4
+  },
+  {
+    "Country": "PER",
+    "BMI": 25.9
+  },
+  {
+    "Country": "PHL",
+    "BMI": 22.9
+  },
+  {
+    "Country": "POL",
+    "BMI": 26.1
+  },
+  {
+    "Country": "PRT",
+    "BMI": 26.1
+  },
+  {
+    "Country": "QAT",
+    "BMI": 28.6
+  },
+  {
+    "Country": "KOR",
+    "BMI": 23.6
+  },
+  {
+    "Country": "MDA",
+    "BMI": 26.5
+  },
+  {
+    "Country": "ROU",
+    "BMI": 25.2
+  },
+  {
+    "Country": "RUS",
+    "BMI": 26.2
+  },
+  {
+    "Country": "RWA",
+    "BMI": 21.7
+  },
+  {
+    "Country": "KNA",
+    "BMI": 29.2
+  },
+  {
+    "Country": "LCA",
+    "BMI": 28.8
+  },
+  {
+    "Country": "VCT",
+    "BMI": 26.8
+  },
+  {
+    "Country": "RSM",
+    "BMI": 31.4
+  },
+  {
+    "Country": "STP",
+    "BMI": 24.4
+  },
+  {
+    "Country": "SAU",
+    "BMI": 28.1
+  },
+  {
+    "Country": "SEN",
+    "BMI": 22.7
+  },
+  {
+    "Country": "SRB",
+    "BMI": 25.7
+  },
+  {
+    "Country": "SYC",
+    "BMI": 26.4
+  },
+  {
+    "Country": "SLE",
+    "BMI": 22.5
+  },
+  {
+    "Country": "SGP",
+    "BMI": 23.6
+  },
+  {
+    "Country": "SVK",
+    "BMI": 26.3
+  },
+  {
+    "Country": "SVN",
+    "BMI": 26.7
+  },
+  {
+    "Country": "SLB",
+    "BMI": 25.4
+  },
+  {
+    "Country": "SOM",
+    "BMI": 21.7
+  },
+  {
+    "Country": "ZAF",
+    "BMI": 26.9
+  },
+  {
+    "Country": "SSD",
+    "BMI": 24.9
+  },
+  {
+    "Country": "ESP",
+    "BMI": 26.6
+  },
+  {
+    "Country": "LKA",
+    "BMI": 22.5
+  },
+  {
+    "Country": "SDN",
+    "BMI": 24.9
+  },
+  {
+    "Country": "SUR",
+    "BMI": 26.8
+  },
+  {
+    "Country": "SWZ",
+    "BMI": 26.2
+  },
+  {
+    "Country": "SWE",
+    "BMI": 25.6
+  },
+  {
+    "Country": "CHE",
+    "BMI": 25.1
+  },
+  {
+    "Country": "SYR",
+    "BMI": 27.7
+  },
+  {
+    "Country": "TJK",
+    "BMI": 24.9
+  },
+  {
+    "Country": "THA",
+    "BMI": 23.8
+  },
+  {
+    "Country": "MKD",
+    "BMI": 25.7
+  },
+  {
+    "Country": "TLS",
+    "BMI": 20.9
+  },
+  {
+    "Country": "TGO",
+    "BMI": 22.9
+  },
+  {
+    "Country": "TON",
+    "BMI": 31.8
+  },
+  {
+    "Country": "TTO",
+    "BMI": 28
+  },
+  {
+    "Country": "TUN",
+    "BMI": 26.3
+  },
+  {
+    "Country": "TUR",
+    "BMI": 27.5
+  },
+  {
+    "Country": "TKM",
+    "BMI": 25.8
+  },
+  {
+    "Country": "TUV",
+    "BMI": 29.1
+  },
+  {
+    "Country": "UGA",
+    "BMI": 21.7
+  },
+  {
+    "Country": "UKR",
+    "BMI": 25.9
+  },
+  {
+    "Country": "ARE",
+    "BMI": 28.6
+  },
+  {
+    "Country": "GBR",
+    "BMI": 27
+  },
+  {
+    "Country": "TZA",
+    "BMI": 22.8
+  },
+  {
+    "Country": "USA",
+    "BMI": 28.5
+  },
+  {
+    "Country": "URY",
+    "BMI": 26.4
+  },
+  {
+    "Country": "UZB",
+    "BMI": 25.6
+  },
+  {
+    "Country": "VUT",
+    "BMI": 26
+  },
+  {
+    "Country": "VEN",
+    "BMI": 27
+  },
+  {
+    "Country": "VNM",
+    "BMI": 21.1
+  },
+  {
+    "Country": "YEM",
+    "BMI": 25.5
+  },
+  {
+    "Country": "ZMB",
+    "BMI": 22.3
+  },
+  {
+    "Country": "ZWE",
+    "BMI": 23.3
+  }
+	];
+
+		var bmi_20_22 = [];
+		var bmi_22_24 = [];
+		var bmi_24_26 = [];
+		var bmi_26_28 = [];
+		var bmi_28_30 = [];
+		var bmi_30_32 = [];
+		var bmi_32_34 = [];
+		for (var i = 0; i < bmi_dataset.length; i++) {
+			if (bmi_dataset[i].BMI < 22) {
+				bmi_20_22.push(bmi_dataset[i]);
+			}
+			else if (bmi_dataset[i].BMI < 24) {
+				bmi_22_24.push(bmi_dataset[i]);
+			}
+			else if (bmi_dataset[i].BMI < 26) {
+				bmi_24_26.push(bmi_dataset[i]);
+			}
+			else if (bmi_dataset[i].BMI < 28) {
+				bmi_26_28.push(bmi_dataset[i]);
+			}
+			else if (bmi_dataset[i].BMI < 30) {
+				bmi_28_30.push(bmi_dataset[i]);
+			}
+			else if (bmi_dataset[i].BMI < 32) {
+				bmi_30_32.push(bmi_dataset[i]);
+			}
+			else {
+				bmi_32_34.push(bmi_dataset[i]);
+			}
+		}
+
+		document.write(bmi_dataset[1]);
+
 		//legend
-		// var legend_width = 200,
-		// legend_height = 20;
-		// var svg2 = d3.select("#map").append("svg")
-		// 	.attr("width", legend_width)
-		// 	.attr("height", legend_height);
-		// svg2.append("rect")
-		// 	.style("stroke", "#000")
-		// 	.style("fill", "red")
-		// 	.attr("x", 0)
-		// 	.attr("y", 0);
+		var legend_width = 350,
+		legend_height = 40,
+		section_width = 50,
+		section_height = 20;
+		var svg2 = d3.select("#legend").append("svg")
+			.attr("width", legend_width)
+			.attr("height", legend_height);
+		svg2.append("rect")
+			.style("stroke", "#fff")
+			.style("fill", "#ffcccc")
+			.attr("height", section_height)
+			.attr("width", section_width)
+			.attr("x", 0)
+			.attr("y", 0);
+		svg2.append("rect")
+			.style("stroke", "#fff")
+			.style("fill", "#ff9999")
+			.attr("height", section_height)
+			.attr("width", section_width)
+			.attr("x", 50)
+			.attr("y", 0);
+		svg2.append("rect")
+			.style("stroke", "#fff")
+			.style("fill", "#ff6666")
+			.attr("height", section_height)
+			.attr("width", section_width)
+			.attr("x", 100)
+			.attr("y", 0);
+		svg2.append("rect")
+			.style("stroke", "#fff")
+			.style("fill", "#ff3333")
+			.attr("height", section_height)
+			.attr("width", section_width)
+			.attr("x", 150)
+			.attr("y", 0);
+		svg2.append("rect")
+			.style("stroke", "#fff")
+			.style("fill", "#cc0000")
+			.attr("height", section_height)
+			.attr("width", section_width)
+			.attr("x", 200)
+			.attr("y", 0);
+		svg2.append("rect")
+			.style("stroke", "#fff")
+			.style("fill", "#990000")
+			.attr("height", section_height)
+			.attr("width", section_width)
+			.attr("x", 250)
+			.attr("y", 0);
+		svg2.append("rect")
+			.style("stroke", "#fff")
+			.style("fill", "#660000")
+			.attr("height", section_height)
+			.attr("width", section_width)
+			.attr("x", 300)
+			.attr("y", 0);
+		svg2.append("text")
+	    	.attr("class", "scale")
+    		.attr("x", 0)
+	    	.attr("y", 35)
+    		.text("20-22%");
+    	svg2.append("text")
+	    	.attr("class", "scale")
+    		.attr("x", 50)
+	    	.attr("y", 35)
+    		.text("22-24%");
+    	svg2.append("text")
+	    	.attr("class", "scale")
+    		.attr("x", 100)
+	    	.attr("y", 35)
+    		.text("24-26%");
+    	svg2.append("text")
+	    	.attr("class", "scale")
+    		.attr("x", 150)
+	    	.attr("y", 35)
+    		.text("26-28%");
+    	svg2.append("text")
+	    	.attr("class", "scale")
+    		.attr("x", 200)
+	    	.attr("y", 35)
+    		.text("28-30%");
+    	svg2.append("text")
+	    	.attr("class", "scale")
+    		.attr("x", 250)
+	    	.attr("y", 35)
+    		.text("30-32%");
+    	svg2.append("text")
+	    	.attr("class", "scale")
+    		.attr("x", 300)
+	    	.attr("y", 35)
+    		.text("32-34%");
 
 		//map
 		var map_width = 960,
@@ -34,11 +928,6 @@
     		.attr("width", map_width)
     		.attr("height", map_height);
 		var g = svg.append("g");
-		// g.append("rect")
-		// 	.style("stroke", "#000")
-		// 	.style("fill", "red")
-		// 	.attr("x", 0)
-		// 	.attr("y", 0);
 
 		var worldObjects;
 		d3.json("data/world-50m.json", function(error, world) {
@@ -48,21 +937,17 @@
 		countries.forEach(function (country) {
 			g.append("path").attr("d", path(country))
 			.style("fill", "#ccc")
-			.style("stroke", "#888");
+			.style("stroke", "#fff");
 		});
 
-		//legend
-		// g.append("rect")
-		// 	.style("stroke", "#000")
-		// 	.style("fill", "red")
-		// 	.attr("x", 0)
-		// 	.attr("y", 0);
+		// for (var i = 0; i < bmi_20_22.length; i++) {
+		// 	var country = bmi_20_22[i].Country;
+		// 	g.selectAll(".countries")
+		// 		.countries.country {fill: #ffcccc;}
+		// }
+		
 
 	
-	// We can attach events to SVG elements.
-	//  When we map data elements to svg elements,
-	//  we can then define behaviors without specifying
-	//  a particular country. 
 	g.selectAll("path").data(countries)
 	.on("mouseover", function (country) {
 		console.log(country.id);
