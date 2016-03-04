@@ -21,7 +21,7 @@
 	<script>
 		/*Creating x & y scale functions that map data to SVG coordinates*/
 		//Thinking that we could split the companies up by region
-		var xscale = d3.scale.ordinal().domain(["Albania", "Argentina", "Australia", "Austria","Bangladesh","Belarus","Belgium","Bolivia","Bosnia/Herzegovina","Brazil","Bulgaria","Cameroon","Canada","Chile","China","Columbia","Costa Rica","Cyprus","Czech Republic","Denmark","Dominican Republic","Ecuador","Egypt","Estonia","Ethiopia","Fiji","Finland","Gambia","Georgia","Germany","Ghana","Greece","Guatemala","Haiti","Hungary","Iceland","India","Indonesia","Iran","Israel","Italy","Jamaica","Japan","Kenya","Lesotho","Liberia",""])
+		var xscale = d3.scale.ordinal().domain(["Argentina", "Australia","Brazil","Canada","Chile","China","Columbia","Czech Republic","Denmark","Dominican Republic","Egypt","Ethiopia","Finland","Germany","Ghana","Greece","Haiti","Iceland","India","Iran","Israel","Italy","Jamaica","Japan","Kenya","Malaysia","Mexico","Morocco","Netherlands","New Zealand","Nigeria","Pakistan","Peru","Poland"])
 			.rangePoints([125, 1175]);
 
 		var yscale = d3.scale.linear().range([450, 50]);
@@ -50,7 +50,7 @@
 					.call(xaxis)
 					.selectAll("text")
 						.style("text-anchor","end")
-						.style("font-size","10")
+						.style("font-size","12")
 						.attr("dx","-.8em")
 						.attr("dy",".15em")
 						.attr("transform","rotate(-65)");
