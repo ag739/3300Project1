@@ -10,7 +10,12 @@
 	<script src="http://d3js.org/topojson.v1.min.js"></script>
 	<script src="http://d3js.org/colorbrewer.v1.min.js"></script>
 	<script src="legend.js"></script>
+	<script src="data/condensed_food_intake_by_country.js"></script>
 	<script>
+		var countries = [];
+		data.forEach(function(obj) {
+			countries.push(obj.Country);
+		});
 
 		function createLegend(svg, legendData) {
 			sampleOrdinal = d3.scale.category20().domain(legendData);
@@ -28,7 +33,7 @@
 		function createGraph(divID, legendData) {
 			var height = 650, width = 900;
 			/*Creating x & y scale functions that map data to SVG coordinates*/
-			var xscale = d3.scale.ordinal().domain(["Albania", "Argentina", "Australia", "Austria","Bangladesh","Belarus","Belgium","Bolivia","Bosnia/Herzegovina","Brazil","Bulgaria","Cameroon","Canada","Chile","China","Columbia","Costa Rica","Cyprus","Czech Republic","Denmark","Dominican Republic","Ecuador","Egypt","Estonia","Ethiopia","Fiji","Finland","Gambia"])
+			var xscale = d3.scale.ordinal().domain(countries)
 			.rangePoints([125, 775]);
 			var yscale = d3.scale.linear().range([50, 450]);
 			//Container
