@@ -82,7 +82,7 @@
 						.attr("xlink:href", "img/" + divID.toLowerCase() + ".png")
 					    .attr("width", 300)
 					    .attr("height", 232)
-					    .attr("x", 850)
+					    .attr("x", 875)
 					    .attr("y",height/2 - 232/2);
 
 			//Labels
@@ -126,7 +126,8 @@
 		Although the food pyramid was discontinued in 2011, the data we gathered is from 2010, so we figured it is an okay way to represent our data.
 		<br>Food pyramid image found <a href="https://en.wikipedia.org/wiki/MyPyramid" target="_blank">here</a>.</p>
 	<div id = "Grains">
-		<script>var svg_grains = createGraph("Grains", ["Wheat","Carbs"], "#ff794d");
+		<script>
+		var svg_grains = createGraph("Grains", ["Wheat","Carbs"], "#ff794d");
 		data.forEach(function(obj) {
 			svg_grains.append("rect").attr("x", xscale(obj.Country)).attr("y", yscale(obj.Carbohydrates)).attr("width", 15).attr("height", yscale(0) - yscale(obj.Carbohydrates) + 50).style("fill", colors[1]);
 			svg_grains.append("rect").attr("x", xscale(obj.Country)).attr("y", yscale(obj.Wheat)).attr("width", 15).attr("height", yscale(0) - yscale(obj.Wheat) + 50).style("fill", colors[0]);
@@ -135,23 +136,55 @@
 	</div>
 
 	<div id = "Vegetables">
-		<script> var svg_veggies = createGraph("Vegetables", ["Vegetables"],"#009926");</script>
+		<script> 
+		var svg_veggies = createGraph("Vegetables", ["Vegetables"],"#009926");
+		data.forEach(function(obj) {
+			svg_veggies.append("rect").attr("x", xscale(obj.Country)).attr("y", yscale(obj.Vegetables)).attr("width", 15).attr("height", yscale(0) - yscale(obj.Vegetables) + 50).style("fill", colors[0]);
+		});
+		</script>
 	</div>
 
 	<div id = "Fruits">
-		<script> var svg_fruits = createGraph("Fruits", ["Fruit"],"#cc0000");</script>
+		<script> 
+		var svg_fruits = createGraph("Fruits", ["Fruit"],"#cc0000");
+		data.forEach(function(obj){
+			svg_fruits.append("rect").attr("x", xscale(obj.Country)).attr("y", yscale(obj.Fruit)).attr("width", 15).attr("height", yscale(0) - yscale(obj.Fruit) + 50).style("fill", colors[0]);
+		});
+		</script>
 	</div>
 
 	<div id = "Oils">
-		<script> var svg_oils = createGraph("Oils", ["Sugars", "Olive Oil", "Palm Oil", "Soybean Oil", "Vegetable Oil"],"#cccc00");</script>
+		<script> 
+		var svg_oils = createGraph("Oils", ["Sugars", "Olive Oil", "Palm Oil", "Soybean Oil", "Vegetable Oil"],"#cccc00");
+		data.forEach(function(obj){
+			svg_oils.append("rect").attr("x", xscale(obj.Country)).attr("y", yscale(obj.Sugars)).attr("width", 5).attr("height", yscale(0) - yscale(obj.Sugars) + 50).style("fill", colors[0]);
+			svg_oils.append("rect").attr("x", xscale(obj.Country)+5).attr("y", yscale(obj.Olive_Oil)).attr("width", 5).attr("height", yscale(0) - yscale(obj.Olive_Oil) + 50).style("fill", colors[1]);
+			svg_oils.append("rect").attr("x", xscale(obj.Country)+10).attr("y", yscale(obj.Palm_Oil)).attr("width", 5).attr("height", yscale(0) - yscale(obj.Palm_Oil) + 50).style("fill", colors[2]);
+			svg_oils.append("rect").attr("x", xscale(obj.Country)+15).attr("y", yscale(obj.Soybean_Oil)).attr("width", 5).attr("height", yscale(0) - yscale(obj.Soybean_Oil) + 50).style("fill", colors[3]);
+			svg_oils.append("rect").attr("x", xscale(obj.Country)+20).attr("y", yscale(obj.Vegetable_Oil)).attr("width", 5).attr("height", yscale(0) - yscale(obj.Vegetable_Oil) + 50).style("fill", colors[4]);
+		});
+		</script>
 	</div>
 
 	<div id = "Milk">
-		<script> var svg_milk = createGraph("Milk", ["Milk"],"#00ace6");</script>
+		<script> 
+		var svg_milk = createGraph("Milk", ["Milk"],"#00ace6");
+		data.forEach(function(obj){
+			svg_milk.append("rect").attr("x", xscale(obj.Country)).attr("y", yscale(obj.Milk)).attr("width", 15).attr("height", yscale(0) - yscale(obj.Milk) + 50).style("fill", colors[0]);
+		});
+		</script>
 	</div>
 
 	<div id = "Meat">
-		<script> var svg_meat = createGraph("Meat", ["Meat", "Eggs", "Nuts", "Fish"],"#6600cc");</script>
+		<script> 
+		var svg_meat = createGraph("Meat", ["Meat", "Eggs", "Nuts", "Fish"],"#6600cc");
+		data.forEach(function(obj){
+			svg_meat.append("rect").attr("x", xscale(obj.Country)).attr("y", yscale(obj.Meat)).attr("width", 5).attr("height", yscale(0) - yscale(obj.Meat) + 50).style("fill", colors[0]);
+			svg_meat.append("rect").attr("x", xscale(obj.Country)+5).attr("y", yscale(obj.Eggs)).attr("width", 5).attr("height", yscale(0) - yscale(obj.Eggs) + 50).style("fill", colors[1]);
+			svg_meat.append("rect").attr("x", xscale(obj.Country)+10).attr("y", yscale(obj.Nuts)).attr("width", 5).attr("height", yscale(0) - yscale(obj.Nuts) + 50).style("fill", colors[2]);
+			svg_meat.append("rect").attr("x", xscale(obj.Country)+15).attr("y", yscale(obj.Fish)).attr("width", 5).attr("height", yscale(0) - yscale(obj.Fish) + 50).style("fill", colors[3]);
+		});
+		</script>
 	</div>
 
 	<div id = "BMI">
