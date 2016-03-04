@@ -1,0 +1,108 @@
+<!-- Kelly O'Shaughessy kao58,
+	-->
+<!DOCTYPE html>
+<html>
+<head>
+	<link href='https://fonts.googleapis.com/css?family=Raleway:400,700italic' rel='stylesheet' type='text/css'>
+
+	<!-- Load the d3 library. -->
+	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+	<script src="http://d3js.org/topojson.v1.min.js"></script>
+	<script>
+		function createGraph(divID) {
+			var height = 650, width = 800;
+			/*Creating x & y scale functions that map data to SVG coordinates*/
+			var xscale = d3.scale.linear().range([125, 775]);
+			var yscale = d3.scale.linear().range([50, 450]);
+			//Container
+			var svg_container = d3.select("#" + divID).append("svg")
+							.attr("width", width + 350)
+							.attr("height", height);
+							// .style("border", " 1px solid #ccc");
+			/*Add d3 axes */
+			var xaxis = d3.svg.axis().scale(xscale)
+						.orient("bottom")
+						.ticks(0)
+						.tickSize(1,1);
+			var yaxis = d3.svg.axis().scale(yscale)
+						.orient("left")
+						.ticks(0)
+						.tickSize(1,1);
+			//adding & transforming scales
+			svg_container.append("g").attr("transform", "translate(0,500)").attr("class", "axis").call(xaxis);
+			svg_container.append("g").attr("transform", "translate(125,51)").attr("class", "axis").call(yaxis);
+
+			// food pyramid img
+			var img = svg_container.append("svg:image")
+    					.attr("xlink:href", "img/" + divID.toLowerCase() + ".png")
+					    .attr("width", 300)
+					    .attr("height", 232)
+					    .attr("x", width+50)
+					    .attr("y",height/2 - 232/2);
+
+			//Labels
+			svg_container.append("text")
+							.attr("x", 450).attr("y",620)
+							.style("text-anchor", "middle")
+							.text("Country")
+							.style("font-size",14);
+			svg_container.append("text")
+							.attr("x", 50).attr("y",80)
+							.style("text-anchor", "middle")
+							.text("Intake (kcal)")
+							.style("font-size", 14);
+			svg_container.append("text")
+							.attr("x", 450).attr("y",30)
+							.style("text-anchor", "middle")
+							.text(divID)
+							.style("font-size", 25)
+							.style("fill","#80c1ff");
+		}
+	</script>
+	<title>INFO 3300 Project 1</title>
+	<style>
+		body { font-family: 'Raleway', sans-serif; }
+		svg { font-weight: bold; font-family: 'Raleway', sans-serif;}
+		div {border-top: 3px solid gray; padding-top:20px;}	
+	</style>
+
+
+
+<!-- Food Pyramid image from https://en.wikipedia.org/wiki/MyPyramid: relevant only from 2005 to 2011, which works because we're using data from 2010 -->
+
+</head>
+<body>
+
+	<h1>Food Intake by Country</h1>
+	<p>Ever wonder how food intake, based on what our "daily recommended values", relate to average BMI?
+		We're looking at countries' food intake, based on the daily recommended values for each food group, to see if there's a relationship between that and BMI.
+		Although the food pyramid was discontinued in 2011, the data we compiled is from 2010, so we figured it is an okay way to represent our data.</p>
+	<div id = "Grains">
+		<script>var svg_grains = createGraph("Grains");</script>
+	</div>
+
+	<div id = "Vegetables">
+		<script>var svg_veggies = createGraph("Vegetables");</script>
+	</div>
+
+	<div id = "Fruits">
+		<script>var svg_fruits = createGraph("Fruits");</script>
+	</div>
+
+	<div id = "Oils">
+		<script>var svg_oils = createGraph("Oils");</script>
+	</div>
+
+	<div id = "Milk">
+		<script>var svg_milk = createGraph("Milk");</script>
+	</div>
+
+	<div id = "Meat">
+		<script>var svg_meat = createGraph("Meat");</script>
+	</div>
+
+	<div id = "BMI">
+		<!-- MAP -->
+	</div>
+</body>
+</html>
