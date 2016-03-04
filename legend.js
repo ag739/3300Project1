@@ -27,12 +27,18 @@ d3.svg.legend = function() {
         g.selectAll("g.legendCells").data(legendValues).exit().remove();
         g.selectAll("g.legendCells").select("rect").style("fill", function(d) {return d.color});
         if (orientation == "vertical") {
-            g.selectAll("g.legendCells").select("text.breakLabels").style("display", "block").style("text-anchor", "start").attr("x", cellWidth + cellPadding).attr("y", 5 + (cellHeight / 2)).text(function(d) {return labelFormat(d.stop[0]) + (d.stop[1].length > 0 ? " - " + labelFormat(d.stop[1]) : "")})
+            g.selectAll("g.legendCells").select("text.breakLabels").style("display", "block")
+            	.style("text-anchor", "start")
+            	.attr("x", cellWidth + cellPadding).attr("y", 5 + (cellHeight / 2))
+            	.text(function(d) {return labelFormat(d.stop[0]) + 
+            		(d.stop[1].length > 0 ? " - " + labelFormat(d.stop[1]) : "")})
             g.selectAll("g.legendCells").attr("transform", function(d,i) {return "translate(0," + (i * (cellHeight + cellPadding)) + ")" });
         }
         else {
             g.selectAll("g.legendCells").attr("transform", function(d,i) {return "translate(" + (i * cellWidth) + ",0)" });
-            g.selectAll("text.breakLabels").style("text-anchor", "middle").attr("x", 0).attr("y", -7).style("display", function(d,i) {return i == 0 ? "none" : "block"}).text(function(d) {return labelFormat(d.stop[0])});
+            g.selectAll("text.breakLabels").style("text-anchor", "middle").attr("x", 0).attr("y", -7)
+            .style("display", function(d,i) {return i == 0 ? "none" : "block"})
+            	.text(function(d) {return labelFormat(d.stop[0])});
         }
     }
     g.selectAll("g.legendCells")
