@@ -23,7 +23,9 @@
 					.cellHeight(18)
 					.inputScale(sampleOrdinal)
 					.cellStepping(10);
-			svg.append("g").attr("transform", "translate(820,50)").attr("class", "legend").call(legendGraph);
+			svg.append("g").attr("transform", "translate(820,50)")
+							.attr("class", "legend")
+							.call(legendGraph);
 		}
 
 		function createGraph(divID, legendData, titleColor) {
@@ -42,15 +44,16 @@
 			var xaxis = d3.svg.axis().scale(xscale)
 						.orient("bottom")
 						//.ticks(0)
-						.tickSize(1,1);
+						.tickSize(2,2);
 			var yaxis = d3.svg.axis().scale(yscale)
 						.orient("left")
 						.ticks(10)
-						.tickSize(1,1);
+						.tickSize(2,2);
 			//adding & transforming scales
 			svg_container.append("g")
 					.attr("transform", "translate(0,500)")
 					.attr("class", "axis")
+					.attr("fill", titleColor)
 					.call(xaxis)
 					.selectAll("text")
 						.style("text-anchor","end")
@@ -59,8 +62,9 @@
 						.attr("dy",".15em")
 						.attr("transform","rotate(-65)");
 			svg_container.append("g")
-						.attr("transform", "translate(125,51)")
+						.attr("transform", "translate(125,52)")
 						.attr("class", "axis")
+						.attr("fill", titleColor)
 						.call(yaxis);
 
 			// food pyramid img
@@ -90,7 +94,7 @@
 							.style("font-size", 25)
 							.style("fill",titleColor);
 
-			svg_container.append("g").call(createLegend(svg_container, legendData));
+			createLegend(svg_container, legendData);
 		}
 	</script>
 	<title>INFO 3300 Project 1</title>
@@ -99,6 +103,7 @@
 		svg { font-weight: bold; font-family: 'Raleway', sans-serif;}
 		div {border-top: 3px solid gray; padding-top:20px;}	
 		a, a:link, a:visited {color: #80c1ff; text-decoration: none}
+		.axis text {fill: black;}
 	</style>
 
 </head>
@@ -110,28 +115,28 @@
 		Although the food pyramid was discontinued in 2011, the data we gathered is from 2010, so we figured it is an okay way to represent our data.
 		<br>Food pyramid image found <a href="https://en.wikipedia.org/wiki/MyPyramid" target="_blank">here</a>.</p>
 	<div id = "Grains">
-		<script>var svg_grains = createGraph("Grains", ["Wheat","Carbs"], "#ff794d");
+		<script> var svg_grains = createGraph("Grains", ["Wheat","Carbs"], "#ff794d");
 		</script>
 	</div>
 
 	<div id = "Vegetables">
-		<script>var svg_veggies = createGraph("Vegetables", ["Vegetables"],"#009926");</script>
+		<script> var svg_veggies = createGraph("Vegetables", ["Vegetables"],"#009926");</script>
 	</div>
 
 	<div id = "Fruits">
-		<script>var svg_fruits = createGraph("Fruits", ["Fruit"],"#cc0000");</script>
+		<script> var svg_fruits = createGraph("Fruits", ["Fruit"],"#cc0000");</script>
 	</div>
 
 	<div id = "Oils">
-		<script>var svg_oils = createGraph("Oils", ["Sugars", "Olive Oil", "Palm Oil", "Soybean Oil", "Vegetable Oil"],"#cccc00");</script>
+		<script> var svg_oils = createGraph("Oils", ["Sugars", "Olive Oil", "Palm Oil", "Soybean Oil", "Vegetable Oil"],"#cccc00");</script>
 	</div>
 
 	<div id = "Milk">
-		<script>var svg_milk = createGraph("Milk", ["Milk"],"#00ace6");</script>
+		<script> var svg_milk = createGraph("Milk", ["Milk"],"#00ace6");</script>
 	</div>
 
 	<div id = "Meat">
-		<script>var svg_meat = createGraph("Meat", ["Meat", "Eggs", "Nuts", "Fish"],"#6600cc");</script>
+		<script> var svg_meat = createGraph("Meat", ["Meat", "Eggs", "Nuts", "Fish"],"#6600cc");</script>
 	</div>
 
 	<div id = "BMI">
