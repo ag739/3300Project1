@@ -10,7 +10,21 @@
 	<script src="http://d3js.org/topojson.v1.min.js"></script>
 	<script src="http://d3js.org/colorbrewer.v1.min.js"></script>
 	<script src="legend.js"></script>
+	<script src="data/condensed_food_intake_by_country.js"></script>
 	<script>
+
+		var colors = ["rgb(255, 153, 153)", "rgb(255, 204, 153)", "rgb(255, 255, 153)", "rgb(179, 255, 153)", "rgb(153, 255, 230)"];
+
+		var countries = [];
+		data.forEach(function(obj) {
+			countries.push(obj.Country);
+		});
+
+		/*Creating x & y scale functions that map data to SVG coordinates*/
+		var xscale = d3.scale.ordinal()
+					.domain(countries)
+						.rangePoints([125, 850]);
+		var yscale = d3.scale.linear().domain([0, 3000]).range([450, 50]);
 
 		function createLegend(svg, legendData) {
 			sampleOrdinal = d3.scale.ordinal().domain(legendData)
@@ -28,11 +42,7 @@
 
 		function createGraph(divID, legendData, titleColor) {
 			var height = 650, width = 1000;
-			/*Creating x & y scale functions that map data to SVG coordinates*/
-			var xscale = d3.scale.ordinal()
-						.domain(["Australia", "Brazil","Canada","Chile","China","Egypt","France","Germany","Haiti","India","Indonesia","Iran","Italy","Japan","Madagascar","Mexico","Nigeria","Pakistan","Paraguay","Peru","Russia","Saudi Arabia","South Africa","Sweden","Thailand","Turkey","Ukraine","United Arab Emirates","United Kingdom","United States"])
-						.rangePoints([125, 850]);
-			var yscale = d3.scale.linear().range([450, 50]);
+			
 			//Container
 			var svg_container = d3.select("#" + divID).append("svg")
 							.attr("width", width + 350)
@@ -90,7 +100,8 @@
 							.style("font-size", 25)
 							.style("fill",titleColor);
 
-			svg_container.append("g").call(createLegend(svg_container, legendData));
+			createLegend(svg_container, legendData);
+			return svg_container;
 		}
 	</script>
 	<title>INFO 3300 Project 1</title>
@@ -111,6 +122,10 @@
 		<br>Food pyramid image found <a href="https://en.wikipedia.org/wiki/MyPyramid" target="_blank">here</a>.</p>
 	<div id = "Grains">
 		<script>var svg_grains = createGraph("Grains", ["Wheat","Carbs"], "#ff794d");
+		data.forEach(function(obj) {
+			svg_grains.append("rect").attr("x", xscale(obj.Country)).attr("y", yscale(obj.Carbohydrates)).attr("width", 15).attr("height", yscale(0) - yscale(obj.Carbohydrates) + 50).style("fill", colors[1]);
+			svg_grains.append("rect").attr("x", xscale(obj.Country)).attr("y", yscale(obj.Wheat)).attr("width", 15).attr("height", yscale(0) - yscale(obj.Wheat) + 50).style("fill", colors[0]);
+		});
 		</script>
 	</div>
 
