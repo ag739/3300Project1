@@ -27,11 +27,12 @@
 		}
 
 		function createGraph(divID, legendData, titleColor) {
-			var height = 650, width = 900;
+			var height = 650, width = 1000;
 			/*Creating x & y scale functions that map data to SVG coordinates*/
-			var xscale = d3.scale.ordinal().domain(["Albania", "Argentina", "Australia", "Austria","Bangladesh","Belarus","Belgium","Bolivia","Bosnia/Herzegovina","Brazil","Bulgaria","Cameroon","Canada","Chile","China","Columbia","Costa Rica","Cyprus","Czech Republic","Denmark","Dominican Republic","Ecuador","Egypt","Estonia","Ethiopia","Fiji","Finland","Gambia"])
-			.rangePoints([125, 775]);
-			var yscale = d3.scale.linear().range([50, 450]);
+			var xscale = d3.scale.ordinal()
+						.domain(["Australia", "Brazil","Canada","Chile","China","Egypt","France","Germany","Haiti","India","Indonesia","Iran","Italy","Japan","Madagascar","Mexico","Nigeria","Pakistan","Paraguay","Peru","Russia","Saudi Arabia","South Africa","Sweden","Thailand","Turkey","Ukraine","United Arab Emirates","United Kingdom","United States"])
+						.rangePoints([125, 850]);
+			var yscale = d3.scale.linear().range([450, 50]);
 			//Container
 			var svg_container = d3.select("#" + divID).append("svg")
 							.attr("width", width + 350)
@@ -53,7 +54,7 @@
 					.call(xaxis)
 					.selectAll("text")
 						.style("text-anchor","end")
-						.style("font-size","10")
+						.style("font-size","10.5")
 						.attr("dx","-.8em")
 						.attr("dy",".15em")
 						.attr("transform","rotate(-65)");
@@ -67,7 +68,7 @@
 						.attr("xlink:href", "img/" + divID.toLowerCase() + ".png")
 					    .attr("width", 300)
 					    .attr("height", 232)
-					    .attr("x", 820)
+					    .attr("x", 850)
 					    .attr("y",height/2 - 232/2);
 
 			//Labels
@@ -79,7 +80,7 @@
 			svg_container.append("text")
 							.attr("x", -300).attr("y",40)
 							.style("text-anchor", "middle")
-							.text("Intake (kcal)")
+							.text("Intake (kcal/day)")
 							.attr("transform", "rotate(-90)")
 							.style("font-size", 14);
 			svg_container.append("text")
@@ -109,7 +110,8 @@
 		Although the food pyramid was discontinued in 2011, the data we gathered is from 2010, so we figured it is an okay way to represent our data.
 		<br>Food pyramid image found <a href="https://en.wikipedia.org/wiki/MyPyramid" target="_blank">here</a>.</p>
 	<div id = "Grains">
-		<script>var svg_grains = createGraph("Grains", ["Wheat","Carbs"],"#ff794d");</script>
+		<script>var svg_grains = createGraph("Grains", ["Wheat","Carbs"], "#ff794d");
+		</script>
 	</div>
 
 	<div id = "Vegetables">
