@@ -3,7 +3,7 @@
 // palm oil: kcal / day 
 // soybean oil: kcal / day
 // vegetable oil: kcal / day
-// protein: g / day
+// ***protein: g / day
 // meat: kcal / day
 // eggs: kcal / day
 // nuts: kcal / day
@@ -11,7 +11,7 @@
 // milk: kcal / day
 // fruit: kcal / day
 // veggies: kcal/ day
-// carbs: g / day
+// ***carbs: g / day
 // wheat: kcal / day
 [
   {

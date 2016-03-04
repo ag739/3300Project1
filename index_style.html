@@ -8,11 +8,28 @@
 	<!-- Load the d3 library. -->
 	<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 	<script src="http://d3js.org/topojson.v1.min.js"></script>
+	<script src="http://d3js.org/colorbrewer.v1.min.js"></script>
+	<script src="legend.js"></script>
 	<script>
-		function createGraph(divID) {
-			var height = 650, width = 800;
+
+		function createLegend(svg, legendData) {
+			sampleOrdinal = d3.scale.category20().domain(legendData);
+			legendGraph = d3.svg.legend().labelFormat("none")
+					.cellPadding(5)
+					.orientation("vertical")
+					.units("Ingredient")
+					.cellWidth(25)
+					.cellHeight(18)
+					.inputScale(sampleOrdinal)
+					.cellStepping(10);
+			svg.append("g").attr("transform", "translate(820,50)").attr("class", "legend").call(legendGraph);
+		}
+
+		function createGraph(divID, legendData) {
+			var height = 650, width = 900;
 			/*Creating x & y scale functions that map data to SVG coordinates*/
-			var xscale = d3.scale.linear().range([125, 775]);
+			var xscale = d3.scale.ordinal().domain(["Albania", "Argentina", "Australia", "Austria","Bangladesh","Belarus","Belgium","Bolivia","Bosnia/Herzegovina","Brazil","Bulgaria","Cameroon","Canada","Chile","China","Columbia","Costa Rica","Cyprus","Czech Republic","Denmark","Dominican Republic","Ecuador","Egypt","Estonia","Ethiopia","Fiji","Finland","Gambia"])
+			.rangePoints([125, 775]);
 			var yscale = d3.scale.linear().range([50, 450]);
 			//Container
 			var svg_container = d3.select("#" + divID).append("svg")
@@ -22,22 +39,34 @@
 			/*Add d3 axes */
 			var xaxis = d3.svg.axis().scale(xscale)
 						.orient("bottom")
-						.ticks(0)
+						//.ticks(0)
 						.tickSize(1,1);
 			var yaxis = d3.svg.axis().scale(yscale)
 						.orient("left")
-						.ticks(0)
+						.ticks(10)
 						.tickSize(1,1);
 			//adding & transforming scales
-			svg_container.append("g").attr("transform", "translate(0,500)").attr("class", "axis").call(xaxis);
-			svg_container.append("g").attr("transform", "translate(125,51)").attr("class", "axis").call(yaxis);
+			svg_container.append("g")
+					.attr("transform", "translate(0,500)")
+					.attr("class", "axis")
+					.call(xaxis)
+					.selectAll("text")
+						.style("text-anchor","end")
+						.style("font-size","10")
+						.attr("dx","-.8em")
+						.attr("dy",".15em")
+						.attr("transform","rotate(-65)");
+		svg_container.append("g")
+						.attr("transform", "translate(125,51)")
+						.attr("class", "axis")
+						.call(yaxis);
 
 			// food pyramid img
 			var img = svg_container.append("svg:image")
-    					.attr("xlink:href", "img/" + divID.toLowerCase() + ".png")
+						.attr("xlink:href", "img/" + divID.toLowerCase() + ".png")
 					    .attr("width", 300)
 					    .attr("height", 232)
-					    .attr("x", width+50)
+					    .attr("x", 820)
 					    .attr("y",height/2 - 232/2);
 
 			//Labels
@@ -57,6 +86,8 @@
 							.text(divID)
 							.style("font-size", 25)
 							.style("fill","#80c1ff");
+
+			svg_container.append("g").call(createLegend(svg_container, legendData));
 		}
 	</script>
 	<title>INFO 3300 Project 1</title>
@@ -78,27 +109,27 @@
 		We're looking at countries' food intake, based on the daily recommended values for each food group, to see if there's a relationship between that and BMI.
 		Although the food pyramid was discontinued in 2011, the data we compiled is from 2010, so we figured it is an okay way to represent our data.</p>
 	<div id = "Grains">
-		<script>var svg_grains = createGraph("Grains");</script>
+		<script>var svg_grains = createGraph("Grains", ["Wheat"]);</script>
 	</div>
 
 	<div id = "Vegetables">
-		<script>var svg_veggies = createGraph("Vegetables");</script>
+		<script>var svg_veggies = createGraph("Vegetables", ["Vegetables"]);</script>
 	</div>
 
 	<div id = "Fruits">
-		<script>var svg_fruits = createGraph("Fruits");</script>
+		<script>var svg_fruits = createGraph("Fruits", ["Fruit"]);</script>
 	</div>
 
 	<div id = "Oils">
-		<script>var svg_oils = createGraph("Oils");</script>
+		<script>var svg_oils = createGraph("Oils", ["Sugars", "Olive Oil", "Palm Oil", "Soybean Oil", "Vegetable Oil"]);</script>
 	</div>
 
 	<div id = "Milk">
-		<script>var svg_milk = createGraph("Milk");</script>
+		<script>var svg_milk = createGraph("Milk", ["Milk"]);</script>
 	</div>
 
 	<div id = "Meat">
-		<script>var svg_meat = createGraph("Meat");</script>
+		<script>var svg_meat = createGraph("Meat", ["Meat", "Eggs", "Nuts", "Fish"]);</script>
 	</div>
 
 	<div id = "BMI">
