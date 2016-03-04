@@ -95,11 +95,8 @@
 		body { font-family: 'Raleway', sans-serif; }
 		svg { font-weight: bold; font-family: 'Raleway', sans-serif;}
 		div {border-top: 3px solid gray; padding-top:20px;}	
+		a, a:link, a:visited {color: #80c1ff; text-decoration: none}
 	</style>
-
-
-
-<!-- Food Pyramid image from https://en.wikipedia.org/wiki/MyPyramid: relevant only from 2005 to 2011, which works because we're using data from 2010 -->
 
 </head>
 <body>
@@ -107,7 +104,8 @@
 	<h1>Food Intake by Country</h1>
 	<p>Ever wonder how food intake, based on what our "daily recommended values", relate to average BMI?
 		We're looking at countries' food intake, based on the daily recommended values for each food group, to see if there's a relationship between that and BMI.
-		Although the food pyramid was discontinued in 2011, the data we compiled is from 2010, so we figured it is an okay way to represent our data.</p>
+		Although the food pyramid was discontinued in 2011, the data we gathered is from 2010, so we figured it is an okay way to represent our data.
+		<br>Food pyramid image found <a href="https://en.wikipedia.org/wiki/MyPyramid" target="_blank">here</a>.</p>
 	<div id = "Grains">
 		<script>var svg_grains = createGraph("Grains", ["Wheat"]);</script>
 	</div>
