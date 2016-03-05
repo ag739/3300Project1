@@ -19,6 +19,7 @@
 		data.forEach(function(obj) {
 			countries.push(obj.Country);
 		});
+		countries.push("");
 
 		/*Creating x & y scale functions that map data to SVG coordinates*/
 		var xscale = d3.scale.ordinal()
@@ -30,14 +31,14 @@
 			sampleOrdinal = d3.scale.ordinal().domain(legendData)
 							.range(["#ff9999","#ffcc99","#ffff99","#b3ff99","#99ffe6"]);
 			legendGraph = d3.svg.legend().labelFormat("none")
-					.cellPadding(5)
-					.orientation("vertical")
-					.units("Ingredient")
-					.cellWidth(25)
-					.cellHeight(18)
-					.inputScale(sampleOrdinal)
-					.cellStepping(10);
-			svg.append("g").attr("transform", "translate(820,50)")
+							.cellPadding(5)
+							.orientation("vertical")
+							.units("Ingredient")
+							.cellWidth(25)
+							.cellHeight(18)
+							.inputScale(sampleOrdinal)
+							.cellStepping(10);
+			svg.append("g").attr("transform", "translate(884,100)")
 							.attr("class", "legend")
 							.call(legendGraph);
 		}
@@ -50,7 +51,8 @@
 							.attr("width", width + 350)
 							.attr("height", height);
 							// .style("border", " 1px solid #ccc");
-			/*Add d3 axes */
+
+			//Axes
 			var xaxis = d3.svg.axis().scale(xscale)
 						.orient("bottom")
 						//.ticks(0)
@@ -59,6 +61,7 @@
 						.orient("left")
 						.ticks(10)
 						.tickSize(2,2);
+
 			//adding & transforming scales
 			svg_container.append("g")
 					.attr("transform", "translate(0,500)")
@@ -87,23 +90,25 @@
 
 			//Labels
 			svg_container.append("text")
-							.attr("x", 450).attr("y",620)
+							.attr("x", 450)
+							.attr("y",625)
 							.style("text-anchor", "middle")
 							.text("Country")
-							.style("font-size",14);
+							.style("font-size",18);
 			svg_container.append("text")
 							.attr("x", -300).attr("y",40)
 							.style("text-anchor", "middle")
 							.text("Intake (kcal/day)")
 							.attr("transform", "rotate(-90)")
-							.style("font-size", 14);
+							.style("font-size", 18);
 			svg_container.append("text")
 							.attr("x", 450).attr("y",30)
 							.style("text-anchor", "middle")
 							.text(divID)
-							.style("font-size", 25)
+							.style("font-size", 28)
 							.style("fill",titleColor);
 
+			//Legend
 			createLegend(svg_container, legendData);
 			return svg_container;
 		}
