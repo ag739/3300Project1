@@ -181,7 +181,7 @@ var data =
     "Wheat": 124
   },
   {
-    "Country": "Iran, Islamic Republic of",
+    "Country": "Iran",
     "Sugars": 258,
     "Olive_Oil": 0,
     "Palm_Oil": 0,
@@ -361,7 +361,7 @@ var data =
     "Wheat": 349
   },
   {
-    "Country": "Russian Federation",
+    "Country": "Russia",
     "Sugars": 410,
     "Olive_Oil": 1,
     "Palm_Oil": 0,
