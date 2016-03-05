@@ -505,7 +505,7 @@ var data =
     "Wheat": 947
   },
   {
-    "Country": "United Arab Emirates",
+    "Country": "UAE",
     "Sugars": 388,
     "Olive_Oil": 19,
     "Palm_Oil": 0,
@@ -523,7 +523,7 @@ var data =
     "Wheat": 751
   },
   {
-    "Country": "United Kingdom",
+    "Country": "U.K.",
     "Sugars": 400,
     "Olive_Oil": 19,
     "Palm_Oil": 35,
@@ -541,7 +541,7 @@ var data =
     "Wheat": 772
   },
   {
-    "Country": "United States of America",
+    "Country": "U.S.A.",
     "Sugars": 657,
     "Olive_Oil": 16,
     "Palm_Oil": 0,
