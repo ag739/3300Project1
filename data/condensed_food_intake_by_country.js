@@ -2,6 +2,7 @@ var data =
 [
   {
     "Country": "Australia",
+    "Total": 3120,
     "Sugars": 423,
     "Olive_Oil": 34,
     "Palm_Oil": 112,
@@ -11,7 +12,7 @@ var data =
     "Meat": 492,
     "Eggs": 23,
     "Nuts": 31,
-    "Fish": 30,
+    "Fish": 33,
     "Milk": 331,
     "Fruit": 121,
     "Vegetables": 67,
@@ -20,6 +21,7 @@ var data =
   },
   {
     "Country": "Brazil",
+    "Total": 3060,
     "Sugars": 550,
     "Olive_Oil": 2,
     "Palm_Oil": 20,
@@ -38,6 +40,7 @@ var data =
   },
   {
     "Country": "Canada",
+    "Total": 3590,
     "Sugars": 587,
     "Olive_Oil": 19,
     "Palm_Oil": 1,
@@ -56,6 +59,7 @@ var data =
   },
   {
     "Country": "China",
+    "Total": 2940,
     "Sugars": 79,
     "Olive_Oil": 0,
     "Palm_Oil": 37,
@@ -74,6 +78,7 @@ var data =
   },
   {
     "Country": "Egypt",
+    "Total": 3350,
     "Sugars": 286,
     "Olive_Oil": 0,
     "Palm_Oil": 0,
@@ -92,6 +97,7 @@ var data =
   },
   {
     "Country": "France",
+    "Total": 3640,
     "Sugars": 382,
     "Olive_Oil": 39,
     "Palm_Oil": 12,
@@ -110,6 +116,7 @@ var data =
   },
   {
     "Country": "Germany",
+    "Total": 3490,
     "Sugars": 441,
     "Olive_Oil": 10,
     "Palm_Oil": 0,
@@ -128,6 +135,7 @@ var data =
   },
   {
     "Country": "Haiti",
+    "Total": 2090,
     "Sugars": 244,
     "Olive_Oil": 0,
     "Palm_Oil": 8,
@@ -146,6 +154,7 @@ var data =
   },
   {
     "Country": "India",
+    "Total": 2440,
     "Sugars": 234,
     "Olive_Oil": 0,
     "Palm_Oil": 83,
@@ -164,6 +173,7 @@ var data =
   },
   {
     "Country": "Indonesia",
+    "Total": 2880,
     "Sugars": 158,
     "Olive_Oil": 0,
     "Palm_Oil": 190,
@@ -182,6 +192,7 @@ var data =
   },
   {
     "Country": "Iran",
+    "Total": 3090,
     "Sugars": 258,
     "Olive_Oil": 0,
     "Palm_Oil": 0,
@@ -200,6 +211,7 @@ var data =
   },
   {
     "Country": "Italy",
+    "Total": 3670,
     "Sugars": 301,
     "Olive_Oil": 318,
     "Palm_Oil": 16,
@@ -218,6 +230,7 @@ var data =
   },
   {
     "Country": "Japan",
+    "Total": 2770,
     "Sugars": 271,
     "Olive_Oil": 5,
     "Palm_Oil": 15,
@@ -236,6 +249,7 @@ var data =
   },
   {
     "Country": "Madagascar",
+    "Total": 2040,
     "Sugars": 78,
     "Olive_Oil": 0,
     "Palm_Oil": 4,
@@ -254,6 +268,7 @@ var data =
   },
   {
     "Country": "Mexico",
+    "Total": 3180,
     "Sugars": 472,
     "Olive_Oil": 2,
     "Palm_Oil": 44,
@@ -272,6 +287,7 @@ var data =
   },
   {
     "Country": "Mongolia",
+    "Total": 2250,
     "Sugars": 133,
     "Olive_Oil": 0,
     "Palm_Oil": 5,
@@ -290,6 +306,7 @@ var data =
   },
   {
     "Country": "Nigeria",
+    "Total": 2700,
     "Sugars": 108,
     "Olive_Oil": 0,
     "Palm_Oil": 142,
@@ -308,6 +325,7 @@ var data =
   },
   {
     "Country": "Pakistan",
+    "Total": 2340,
     "Sugars": 264,
     "Olive_Oil": 0,
     "Palm_Oil": 154,
@@ -326,6 +344,7 @@ var data =
   },
   {
     "Country": "Paraguay",
+    "Total": 2530,
     "Sugars": 232,
     "Olive_Oil": 0,
     "Palm_Oil": 11,
@@ -344,6 +363,7 @@ var data =
   },
   {
     "Country": "Peru",
+    "Total": 2570,
     "Sugars": 377,
     "Olive_Oil": 0,
     "Palm_Oil": 28,
@@ -362,6 +382,7 @@ var data =
   },
   {
     "Country": "Russia",
+    "Total": 3080,
     "Sugars": 410,
     "Olive_Oil": 1,
     "Palm_Oil": 0,
@@ -380,6 +401,7 @@ var data =
   },
   {
     "Country": "Saudi Arabia",
+    "Total": 2820,
     "Sugars": 280,
     "Olive_Oil": 7,
     "Palm_Oil": 228,
@@ -398,6 +420,7 @@ var data =
   },
   {
     "Country": "South Africa",
+    "Total": 2940,
     "Sugars": 322,
     "Olive_Oil": 1,
     "Palm_Oil": 24,
@@ -416,6 +439,7 @@ var data =
   },
   {
     "Country": "Spain",
+    "Total": 3410,
     "Sugars": 332,
     "Olive_Oil": 283,
     "Palm_Oil": 0,
@@ -434,6 +458,7 @@ var data =
   },
   {
     "Country": "Sweden",
+    "Total": 3160,
     "Sugars": 460,
     "Olive_Oil": 14,
     "Palm_Oil": 2,
@@ -452,6 +477,7 @@ var data =
   },
   {
     "Country": "Thailand",
+    "Total": 2410,
     "Sugars": 320,
     "Olive_Oil": 0,
     "Palm_Oil": 62,
@@ -470,6 +496,7 @@ var data =
   },
   {
     "Country": "Turkey",
+    "Total": 3340,
     "Sugars": 238,
     "Olive_Oil": 15,
     "Palm_Oil": 89,
@@ -488,6 +515,7 @@ var data =
   },
   {
     "Country": "Ukraine",
+    "Total": 3030,
     "Sugars": 417,
     "Olive_Oil": 0,
     "Palm_Oil": 0,
@@ -506,6 +534,7 @@ var data =
   },
   {
     "Country": "UAE",
+    "Total": 3220,
     "Sugars": 388,
     "Olive_Oil": 19,
     "Palm_Oil": 0,
@@ -524,6 +553,7 @@ var data =
   },
   {
     "Country": "U.K.",
+    "Total": 3440,
     "Sugars": 400,
     "Olive_Oil": 19,
     "Palm_Oil": 35,
@@ -542,6 +572,7 @@ var data =
   },
   {
     "Country": "U.S.A.",
+    "Total": 3770,
     "Sugars": 657,
     "Olive_Oil": 16,
     "Palm_Oil": 0,
