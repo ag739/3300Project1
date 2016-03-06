@@ -281,8 +281,9 @@ function type(d) {
 								"x1": xscale(obj.Country) + x_pad, 
 								"y1": yscale_oil(obj.Soybean_Oil + obj.Olive_Oil + obj.Vegetable_Oil),
 								"width1": 15, 
-								"height1": yscale_oil(0) - yscale_oil(obj.Soybean_Oil+ obj.Olive_Oil + obj.Vegetable_Oil) + padding, 
-								"fill1": oil_colors[2]}];
+								"height1": yscale_oil(0) - yscale_oil(obj.Soybean_Oil+ obj.Olive_Oil + obj.Vegetable_Oil) + padding , 
+								"fill1": oil_colors[2]}
+								];
 
 			//Sort rectangles by height
 			jsonRects.sort(function (a,b) {
