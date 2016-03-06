@@ -19,6 +19,7 @@
 		var oil_colors = ["ffeb99", "#ffffcc", "#e6e600",];
 		var milk_colors = ["#99ccff", "ccffff"];
 		var protein_colors = ["#ccccff","#cc99ff","#993399", "6666ff"];
+		var total_colors = ["#d1d1e0"];
 
 		var countries = [];
 		data.forEach(function(obj) {
@@ -45,6 +46,7 @@
 		var yscale_oil = d3.scale.linear().domain([0, 1500]).range([450, y_padding]);
 		var yscale_milk = d3.scale.linear().domain([0, 500]).range([450, y_padding]);
 		var yscale_protein = d3.scale.linear().domain([0, 600]).range([450, y_padding]);
+		var yscale_total = d3.scale.linear().domain([0, 4000]).range([450, y_padding]);
 
 		/* Graph Legend */
 		function createLegend(svg, legendData, divID) {
@@ -54,7 +56,8 @@
 			else if (divID == "Fruits") { colors = fruit_colors; }
 			else if (divID == "Oils") { colors = oil_colors; }
 			else if (divID == "Dairy") { colors = milk_colors; }
-			else { colors = protein_colors;}
+			else if (divID == "Protein") { colors = protein_colors;}
+			else {colors = total_colors;}
 
 			sampleOrdinal = d3.scale.ordinal().domain(legendData)
 							.range(colors);
@@ -156,11 +159,6 @@
 			return svg_container;
 		}
 
-function type(d) {
-  d.frequency = +d.frequency;
-  return d;
-}
-
 	</script>
 	<title>INFO 3300 Project 1</title>
 	<style>
@@ -199,7 +197,7 @@ function type(d) {
 		We're looking at countries' food intake, based on the daily recommended values for each food group, to see if there's a relationship between that and BMI.
 		Although the food pyramid was discontinued in 2011, the data we gathered is from 2010, so we figured it is an okay way to represent our data.
 		<br>Food pyramid image found <a href="https://en.wikipedia.org/wiki/MyPyramid" target="_blank">here</a>.
-		<br>Note: "daily recommended values" based on US statistics.
+		<br>Note: "daily recommended values" based on US statistics from <a href="http://health.gov/dietaryguidelines/dga2010/dietaryguidelines2010.pdf" target="_blank"> here</a>.
 	</p>
 	<div id = "Grains">
 		<script>
@@ -224,6 +222,28 @@ function type(d) {
 						.style("stroke", "#ccc")
 						.style("stroke-width", "1");
 		});
+
+		//adding average comparison line
+		var avg_female = 1100
+		var avg_male = 1430
+		//female 14 - 50
+		svg_grains.append("line")
+				.attr("x1", 2*padding + 20)
+				.attr("y1", padding + yscale_grain(avg_female))
+				.attr("x2", 850)
+				.attr("y2", padding + yscale_grain(avg_female))
+				.style("stroke", "ff80df")
+				.style("opacity", "0.5")
+				.style("stroke-width", "1.5");
+		//male 14 - 50
+		svg_grains.append("line")
+				.attr("x1", 2*padding + 20)
+				.attr("y1", padding + yscale_grain(avg_male))
+				.attr("x2", 850)
+				.attr("y2", padding + yscale_grain(avg_male))
+				.style("stroke", "3385ff")
+				.style("opacity", "0.5")
+				.style("stroke-width", "1.5");
 		</script>
 	</div>
 
@@ -241,6 +261,7 @@ function type(d) {
 						.style("stroke", "#ccc")
 						.style("stroke-width", "1");
 		});
+
 		</script>
 	</div>
 
@@ -306,6 +327,28 @@ function type(d) {
 						.style("stroke", "#ccc")
 						.style("stroke-width", "1");
 		});
+
+		//adding average comparison line
+		var avg_female = 550
+		var avg_male = 715
+		//female 14 - 50
+		svg_oils.append("line")
+				.attr("x1", 2*padding + 20)
+				.attr("y1", padding + yscale_oil(avg_female))
+				.attr("x2", 850)
+				.attr("y2", padding + yscale_oil(avg_female))
+				.style("stroke", "ff80df")
+				.style("opacity", "0.5")
+				.style("stroke-width", "1.5");
+		//male 14 - 50
+		svg_oils.append("line")
+				.attr("x1", 2*padding + 20)
+				.attr("y1", padding + yscale_oil(avg_male))
+				.attr("x2", 850)
+				.attr("y2", padding + yscale_oil(avg_male))
+				.style("stroke", "3385ff")
+				.style("opacity", "0.5")
+				.style("stroke-width", "1.5");
 
 		</script>
 	</div>
@@ -391,6 +434,66 @@ function type(d) {
 						.style("stroke", "#ccc")
 						.style("stroke-width", "1");
 		});
+
+		//adding average comparison line
+		var avg_female = 350;
+		var avg_male = 585;
+		//female 14 - 50
+		svg_meat.append("line")
+				.attr("x1", 2*padding + 20)
+				.attr("y1", padding + yscale_protein(avg_female))
+				.attr("x2", 850)
+				.attr("y2", padding + yscale_protein(avg_female))
+				.style("stroke", "ff80df")
+				.style("opacity", "0.5")
+				.style("stroke-width", "1.5");
+		//male 14 - 50
+		svg_meat.append("line")
+				.attr("x1", 2*padding + 20)
+				.attr("y1", padding + yscale_protein(avg_male))
+				.attr("x2", 850)
+				.attr("y2", padding + yscale_protein(avg_male))
+				.style("stroke", "3385ff")
+				.style("opacity", "0.5")
+				.style("stroke-width", "1.5");
+		</script>
+	</div>
+
+		<div id = "Total">
+		<script> 
+		var svg_total = createGraph("Total", ["Total"],"black", yscale_total);
+
+		data.forEach(function(obj){
+			svg_total.append("rect")
+					.attr("x", xscale(obj.Country) + x_pad)
+					.attr("y", yscale_total(obj.Total) + padding)
+					.attr("width", 15)
+					.attr("height", yscale_total(0) - yscale_total(obj.Total))
+					.style("fill", total_colors[0])
+					.style("stroke", "#ccc")
+					.style("stroke-width", "1");
+			});
+		//adding average comparison line
+		var avg_female = 2000
+		var avg_male = 2600
+		//female 14 - 50
+		svg_total.append("line")
+				.attr("x1", 2*padding + 20)
+				.attr("y1", padding + yscale_total(avg_female))
+				.attr("x2", 850)
+				.attr("y2", padding + yscale_total(avg_female))
+				.style("stroke", "ff80df")
+				.style("opacity", "0.5")
+				.style("stroke-width", "1.5");
+		//male 14 - 50
+		svg_total.append("line")
+				.attr("x1", 2*padding + 20)
+				.attr("y1", padding + yscale_total(avg_male))
+				.attr("x2", 850)
+				.attr("y2", padding + yscale_total(avg_male))
+				.style("stroke", "3385ff")
+				.style("opacity", "0.5")
+				.style("stroke-width", "1.5");
 		</script>
 	</div>
 
