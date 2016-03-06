@@ -13,18 +13,28 @@
 	<script src="data/condensed_food_intake_by_country.js"></script>
 	<script>
 
-		var colors = ["rgb(255, 153, 153)", "rgb(255, 204, 153)", "rgb(255, 255, 153)", "rgb(179, 255, 153)", "rgb(153, 255, 230)"];
+		var grain_colors = ["#ff9900", "ffcc99"];
+		var veg_colors = ["#98e698"];
+		var fruit_colors = ["#ff9999"];
+		var oil_colors = ["ffeb99", "#e6e600","#ffffcc"];
+		var milk_colors = ["#99ccff"];
+		var protein_colors = ["#ccccff","#cc99ff","#993399", "6666ff"];
+		
 
 		var countries = [];
 		data.forEach(function(obj) {
 			countries.push(obj.Country);
 		});
+		//padding
 		countries.push("");
 
 		/*Creating x & y scale functions that map data to SVG coordinates*/
 		var range = 850 - 125;
 		var x_padding = 125;
 		var y_padding = 50;
+
+		var padding = 50;
+		var x_pad = 4;
 
 		var xscale = d3.scale.ordinal()
 					.domain(countries)
@@ -33,13 +43,22 @@
 		var yscale_grain = d3.scale.linear().domain([0, 3000]).range([450, y_padding]);
 		var yscale_veg = d3.scale.linear().domain([0, 200]).range([450, y_padding]);
 		var yscale_fruit = d3.scale.linear().domain([0, 300]).range([450, y_padding]);
-		var yscale_oil = d3.scale.linear().domain([0, 800]).range([450, y_padding]);
+		var yscale_oil = d3.scale.linear().domain([0, 1500]).range([450, y_padding]);
 		var yscale_milk = d3.scale.linear().domain([0, 600]).range([450, y_padding]);
 		var yscale_protein = d3.scale.linear().domain([0, 800]).range([450, y_padding]);
 
-		function createLegend(svg, legendData) {
+		/* Graph Legend */
+		function createLegend(svg, legendData, divID) {
+			var colors;
+			if (divID == "Grains") { colors = grain_colors; }
+			else if (divID == "Vegetables") { colors = veg_colors; }
+			else if (divID == "Fruits") { colors = fruit_colors; }
+			else if (divID == "Oils") { colors = oil_colors; }
+			else if (divID == "Milk") { colors = milk_colors; }
+			else { colors = protein_colors;}
+
 			sampleOrdinal = d3.scale.ordinal().domain(legendData)
-							.range(["#ff9999","#ffcc99","#ffff99","#b3ff99","#99ffe6"]);
+							.range(colors);
 			legendGraph = d3.svg.legend().labelFormat("none")
 							.cellPadding(5)
 							.orientation("vertical")
@@ -52,7 +71,7 @@
 							.attr("class", "legend")
 							.call(legendGraph);
 		}
-
+		/* Makes graphs */
 		function createGraph(divID, legendData, titleColor, yscale) {
 			var height = 650, width = 1000;
 			
@@ -65,17 +84,19 @@
 			//Axes
 			var xaxis = d3.svg.axis().scale(xscale)
 						.orient("bottom")
-						.tickSize(2,2);
+						.tickSize(0)
+						
 			var yaxis = d3.svg.axis().scale(yscale)
 						.orient("left")
 						.ticks(4)
-						.tickSize(2,2);
+						.tickSize(4,1);
 
 			//adding & transforming scales
 			svg_container.append("g")
 					.attr("transform", "translate(0,500)")
 					.attr("class", "axis")
-					.attr("fill", titleColor)
+					.attr("fill", "#ccc")
+					.attr("stroke-width","2")
 					.call(xaxis)
 					.selectAll("text")
 						.style("text-anchor","end")
@@ -84,9 +105,10 @@
 						.attr("dy",".15em")
 						.attr("transform","rotate(-60), translate(4,7)");
 			svg_container.append("g")
-						.attr("transform", "translate(125,52)")
+						.attr("transform", "translate(125,50)")
 						.attr("class", "axis")
-						.attr("fill", titleColor)
+						.attr("fill", "#ccc")
+						.attr("stroke-width","2")
 						.call(yaxis)
 						.selectAll("text")
 							.style("font-size","14");
@@ -99,7 +121,7 @@
 					    .attr("x", 875)
 					    .attr("y",height/2 - 232/2);
 
-			//Labels
+			//Labels:
 			//Country
 			svg_container.append("text")
 							.attr("x", range/2 + x_padding)
@@ -131,9 +153,10 @@
 							.style("fill",titleColor);
 
 			//Legend
-			createLegend(svg_container, legendData);
+			createLegend(svg_container, legendData, divID);
 			return svg_container;
 		}
+
 	</script>
 	<title>INFO 3300 Project 1</title>
 	<style>
@@ -142,6 +165,12 @@
 		div {border-top: 3px solid gray; padding-top:20px;}	
 		a, a:link, a:visited {color: #80c1ff; text-decoration: none}
 		.axis text {fill: black;}
+		.axis path,
+		.axis line {
+	  		fill: none;
+	  		stroke: #ccc;
+	  		shape-rendering: crispEdges;
+  		}	
 	</style>
 
 </head>
@@ -156,22 +185,26 @@
 	</p>
 	<div id = "Grains">
 		<script>
-		var padding = 50;
-
 		var svg_grains = createGraph("Grains", ["Wheat","Carbs"], "#ff794d",yscale_grain);
+
 		data.forEach(function(obj) {
 			svg_grains.append("rect")
-						.attr("x", xscale(obj.Country))
+						.attr("x", xscale(obj.Country) +x_pad)
 						.attr("y", yscale_grain(obj.Carbohydrates))
 						.attr("width", 15)
 						.attr("height", yscale_grain(0) - yscale_grain(obj.Carbohydrates) + padding)
-						.style("fill", colors[1]);
+						.style("fill", grain_colors[1])
+						.style("stroke", "#ccc")
+						.style("stroke-width", "1");
+
 			svg_grains.append("rect")
-						.attr("x", xscale(obj.Country))
+						.attr("x", xscale(obj.Country) +x_pad)
 						.attr("y", yscale_grain(obj.Wheat))
 						.attr("width", 15)
 						.attr("height", yscale_grain(0) - yscale_grain(obj.Wheat) + padding)
-						.style("fill", colors[0]);
+						.style("fill", grain_colors[0])
+						.style("stroke", "#ccc")
+						.style("stroke-width", "1");
 		});
 		</script>
 	</div>
@@ -179,13 +212,16 @@
 	<div id = "Vegetables">
 		<script> 
 		var svg_veggies = createGraph("Vegetables", ["Vegetables"],"#009926", yscale_veg);
+
 		data.forEach(function(obj) {
 			svg_veggies.append("rect")
-						.attr("x", xscale(obj.Country))
+						.attr("x", xscale(obj.Country) +x_pad)
 						.attr("y", yscale_veg(obj.Vegetables))
 						.attr("width", 15)
 						.attr("height", yscale_veg(0) - yscale_veg(obj.Vegetables) + padding)
-						.style("fill", colors[0]);
+						.style("fill", veg_colors[0])
+						.style("stroke", "#ccc")
+						.style("stroke-width", "1");
 		});
 		</script>
 	</div>
@@ -195,50 +231,70 @@
 		var svg_fruits = createGraph("Fruits", ["Fruit"],"#cc0000",yscale_fruit);
 		data.forEach(function(obj){
 			svg_fruits.append("rect")
-						.attr("x", xscale(obj.Country))
+						.attr("x", xscale(obj.Country) + x_pad)
 						.attr("y", yscale_fruit(obj.Fruit))
 						.attr("width", 15)
 						.attr("height", yscale_fruit(0) - yscale_fruit(obj.Fruit) + padding)
-						.style("fill", colors[0]);
+						.style("fill", fruit_colors[0])
+						.style("stroke", "#ccc")
+						.style("stroke-width", "1");
 		});
 		</script>
 	</div>
 
 	<div id = "Oils">
 		<script> 
-		var svg_oils = createGraph("Oils", ["Sugars", "Olive Oil", "Palm Oil", "Soybean Oil", "Vegetable Oil"],"#cccc00", yscale_oil);
-		data.forEach(function(obj){
-			svg_oils.append("rect")
-					.attr("x", xscale(obj.Country))
-					.attr("y", yscale_oil(obj.Sugars))
-					.attr("width", 5)
-					.attr("height", yscale_oil(0) - yscale_oil(obj.Sugars) + padding)
-					.style("fill", colors[0]);
-			svg_oils.append("rect")
-					.attr("x", xscale(obj.Country)+5)
-					.attr("y", yscale_oil(obj.Olive_Oil))
-					.attr("width", 5)
-					.attr("height", yscale_oil(0) - yscale_oil(obj.Olive_Oil) + padding)
-					.style("fill", colors[1]);
-			svg_oils.append("rect")
-					.attr("x", xscale(obj.Country)+10)
-					.attr("y", yscale_oil(obj.Palm_Oil))
-					.attr("width", 5)
-					.attr("height", yscale_oil(0) - yscale_oil(obj.Palm_Oil) + padding)
-					.style("fill", colors[2]);
-			svg_oils.append("rect")
-					.attr("x", xscale(obj.Country)+15)
-					.attr("y", yscale_oil(obj.Soybean_Oil))
-					.attr("width", 5)
-					.attr("height", yscale_oil(0) - yscale_oil(obj.Soybean_Oil) + padding)
-					.style("fill", colors[3]);
-			svg_oils.append("rect")
-					.attr("x", xscale(obj.Country)+20)
-					.attr("y", yscale_oil(obj.Vegetable_Oil))
-					.attr("width", 5)
-					.attr("height", yscale_oil(0) - yscale_oil(obj.Vegetable_Oil) + padding)
-					.style("fill", colors[4]);
+
+		var svg_oils = createGraph("Oils", ["Sugars", "Saturated Fat", "Unsaturated Fat"],"#cccc00", yscale_oil);
+
+		//Saturated fats: palm oil
+		//Unsaturated fats: Olive oil, vegetable oil, soybean oil
+
+		data.forEach( function(obj){
+			var jsonRects = [
+							{ 
+								"x1": xscale(obj.Country) + x_pad, 
+								"y1": yscale_oil(obj.Sugars),
+								"width1": 15, 
+								"height1": yscale_oil(0) - yscale_oil(obj.Sugars) + padding, 
+								"fill1": oil_colors[0] 
+							},
+							{
+								"x1": xscale(obj.Country) + x_pad, 
+								"y1": yscale_oil(obj.Palm_Oil),
+								"width1": 15, 
+								"height1": yscale_oil(0) - yscale_oil(obj.Palm_Oil) + padding, 
+								"fill1": oil_colors[1]
+							},
+							{
+								"x1": xscale(obj.Country) + x_pad, 
+								"y1": yscale_oil(obj.Soybean_Oil + obj.Olive_Oil + obj.Vegetable_Oil),
+								"width1": 15, 
+								"height1": yscale_oil(0) - yscale_oil(obj.Soybean_Oil+ obj.Olive_Oil + obj.Vegetable_Oil) + padding, 
+								"fill1": oil_colors[2]}];
+
+			//Sort rectangles by height
+			jsonRects.sort(function (a,b) {
+					if (a.y1 > b.y1) { return 1; }
+					if (a.y1 < b.y1) { return -1; }
+					return 0;
+			});
+
+			var rects = svg_oils.selectAll("jsonRects")
+						.data(jsonRects)
+						.enter()
+						.append("rect");
+
+			var rect_attributes = rects
+						.attr("x", function(d) {return d.x1; })
+						.attr("y", function(d) {return d.y1;})
+						.attr("width", function(d) {return d.width1;})
+						.attr("height", function(d) {return d.height1;})
+						.style("fill", function(d) { return d.fill1; })
+						.style("stroke", "#ccc")
+						.style("stroke-width", "1");
 		});
+
 		</script>
 	</div>
 
@@ -247,11 +303,13 @@
 		var svg_milk = createGraph("Milk", ["Milk"],"#00ace6", yscale_milk);
 		data.forEach(function(obj){
 			svg_milk.append("rect")
-					.attr("x", xscale(obj.Country))
+					.attr("x", xscale(obj.Country) + x_pad)
 					.attr("y", yscale_milk(obj.Milk))
 					.attr("width", 15)
 					.attr("height", yscale_milk(0) - yscale_milk(obj.Milk) + padding)
-					.style("fill", colors[0]);
+					.style("fill", milk_colors[0])
+					.style("stroke", "#ccc")
+					.style("stroke-width", "1");
 		});
 		</script>
 	</div>
@@ -259,30 +317,59 @@
 	<div id = "Protein">
 		<script> 
 		var svg_meat = createGraph("Protein", ["Meat", "Eggs", "Nuts", "Fish"],"#6600cc",yscale_protein);
-		data.forEach(function(obj){
-			svg_meat.append("rect")
-					.attr("x", xscale(obj.Country))
-					.attr("y", yscale_protein(obj.Meat))
-					.attr("width", 5)
-					.attr("height", yscale_protein(0) - yscale_protein(obj.Meat) + padding)
-					.style("fill", colors[0]);
-			svg_meat.append("rect")
-					.attr("x", xscale(obj.Country)+5)
-					.attr("y", yscale_protein(obj.Eggs))
-					.attr("width", 5)
-					.attr("height", yscale_protein(0) - yscale_protein(obj.Eggs) + padding)
-					.style("fill", colors[1]);
-			svg_meat.append("rect")
-					.attr("x", xscale(obj.Country)+10)
-					.attr("y", yscale_protein(obj.Nuts)).attr("width", 5)
-					.attr("height", yscale_protein(0) - yscale_protein(obj.Nuts) + padding)
-					.style("fill", colors[2]);
-			svg_meat.append("rect")
-					.attr("x", xscale(obj.Country)+15)
-					.attr("y", yscale_protein(obj.Fish))
-					.attr("width", 5)
-					.attr("height", yscale_protein(0) - yscale_protein(obj.Fish) + padding)
-					.style("fill", colors[3]);
+
+		data.forEach( function(obj){
+			var proteinJsonRects = [
+							{ 
+								"x1": xscale(obj.Country) + x_pad, 
+								"y1": yscale_protein(obj.Meat),
+								"width1": 15, 
+								"height1": yscale_protein(0) - yscale_protein(obj.Meat) + padding, 
+								"fill1": protein_colors[0] 
+							},
+							{ 
+								"x1": xscale(obj.Country) + x_pad, 
+								"y1": yscale_protein(obj.Eggs),
+								"width1": 15, 
+								"height1": yscale_protein(0) - yscale_protein(obj.Eggs) + padding, 
+								"fill1": protein_colors[1] 
+							},
+							{ 
+								"x1": xscale(obj.Country) + x_pad, 
+								"y1": yscale_protein(obj.Nuts),
+								"width1": 15, 
+								"height1": yscale_protein(0) - yscale_protein(obj.Nuts) + padding, 
+								"fill1": protein_colors[2] 
+							},
+							{ 
+								"x1": xscale(obj.Country) + x_pad, 
+								"y1": yscale_protein(obj.Fish),
+								"width1": 15, 
+								"height1": yscale_protein(0) - yscale_protein(obj.Fish) + padding, 
+								"fill1": protein_colors[3] 
+							}
+								];
+
+			//Sort rectangles by height
+			proteinJsonRects.sort(function (a,b) {
+					if (a.y1 > b.y1) { return 1; }
+					if (a.y1 < b.y1) { return -1; }
+					return 0;
+			});
+
+			var rects = svg_meat.selectAll("proteinJsonRects")
+						.data(proteinJsonRects)
+						.enter()
+						.append("rect");
+
+			var rect_attributes = rects
+						.attr("x", function(d) {return d.x1; })
+						.attr("y", function(d) {return d.y1;})
+						.attr("width", function(d) {return d.width1;})
+						.attr("height", function(d) {return d.height1;})
+						.style("fill", function(d) { return d.fill1; })
+						.style("stroke", "#ccc")
+						.style("stroke-width", "1");
 		});
 		</script>
 	</div>
