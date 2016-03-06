@@ -19,7 +19,6 @@
 		var oil_colors = ["ffeb99", "#e6e600","#ffffcc"];
 		var milk_colors = ["#99ccff", "ccffff"];
 		var protein_colors = ["#ccccff","#cc99ff","#993399", "6666ff"];
-		
 
 		var countries = [];
 		data.forEach(function(obj) {
@@ -264,25 +263,18 @@ function type(d) {
 	<div id = "Oils">
 		<script> 
 
-		var svg_oils = createGraph("Oils", ["Sugars", "Saturated Fat", "Unsaturated Fat"],"#cccc00", yscale_oil);
+		var svg_oils = createGraph("Oils", ["Saturated Fat", "Unsaturated Fat"],"#cccc00", yscale_oil);
 
-		//Saturated fats: palm oil
+		//Saturated fats: palm oil, coconut oil, sugars
 		//Unsaturated fats: Olive oil, vegetable oil, soybean oil
 
 		data.forEach( function(obj){
 			var jsonRects = [
-							{ 
-								"x1": xscale(obj.Country) + x_pad, 
-								"y1": yscale_oil(obj.Sugars),
-								"width1": 15, 
-								"height1": yscale_oil(0) - yscale_oil(obj.Sugars) + padding, 
-								"fill1": oil_colors[0] 
-							},
 							{
 								"x1": xscale(obj.Country) + x_pad, 
-								"y1": yscale_oil(obj.Palm_Oil),
+								"y1": yscale_oil(obj.Palm_Oil + obj.Sugars + obj.Coconut_Oil),
 								"width1": 15, 
-								"height1": yscale_oil(0) - yscale_oil(obj.Palm_Oil) + padding, 
+								"height1": yscale_oil(0) - yscale_oil(obj.Palm_Oil + obj.Sugars + obj.Coconut_Oil) + padding, 
 								"fill1": oil_colors[1]
 							},
 							{
