@@ -16,7 +16,7 @@
 		var grain_colors = ["#ff9900", "ffcc99"];
 		var veg_colors = ["#98e698"];
 		var fruit_colors = ["#ff9999"];
-		var oil_colors = ["ffeb99", "#e6e600","#ffffcc"];
+		var oil_colors = ["ffeb99", "#ffffcc", "#e6e600",];
 		var milk_colors = ["#99ccff", "ccffff"];
 		var protein_colors = ["#ccccff","#cc99ff","#993399", "6666ff"];
 
@@ -39,12 +39,12 @@
 					.domain(countries)
 					.rangePoints([125, 850]);
 
-		var yscale_grain = d3.scale.linear().domain([0, 3000]).range([450, y_padding]);
+		var yscale_grain = d3.scale.linear().domain([0, 2500]).range([450, y_padding]);
 		var yscale_veg = d3.scale.linear().domain([0, 200]).range([450, y_padding]);
-		var yscale_fruit = d3.scale.linear().domain([0, 300]).range([450, y_padding]);
+		var yscale_fruit = d3.scale.linear().domain([0, 250]).range([450, y_padding]);
 		var yscale_oil = d3.scale.linear().domain([0, 1500]).range([450, y_padding]);
-		var yscale_milk = d3.scale.linear().domain([0, 600]).range([450, y_padding]);
-		var yscale_protein = d3.scale.linear().domain([0, 800]).range([450, y_padding]);
+		var yscale_milk = d3.scale.linear().domain([0, 500]).range([450, y_padding]);
+		var yscale_protein = d3.scale.linear().domain([0, 600]).range([450, y_padding]);
 
 		/* Graph Legend */
 		function createLegend(svg, legendData, divID) {
@@ -208,18 +208,18 @@ function type(d) {
 		data.forEach(function(obj) {
 			svg_grains.append("rect")
 						.attr("x", xscale(obj.Country) +x_pad)
-						.attr("y", yscale_grain(obj.Carbohydrates))
+						.attr("y", yscale_grain(obj.Carbohydrates) + padding)
 						.attr("width", 15)
-						.attr("height", yscale_grain(0) - yscale_grain(obj.Carbohydrates) + padding)
+						.attr("height", yscale_grain(0) - yscale_grain(obj.Carbohydrates))
 						.style("fill", grain_colors[1])
 						.style("stroke", "#ccc")
 						.style("stroke-width", "1");
 
 			svg_grains.append("rect")
 						.attr("x", xscale(obj.Country) +x_pad)
-						.attr("y", yscale_grain(obj.Wheat))
+						.attr("y", yscale_grain(obj.Wheat) + padding)
 						.attr("width", 15)
-						.attr("height", yscale_grain(0) - yscale_grain(obj.Wheat) + padding)
+						.attr("height", yscale_grain(0) - yscale_grain(obj.Wheat))
 						.style("fill", grain_colors[0])
 						.style("stroke", "#ccc")
 						.style("stroke-width", "1");
@@ -234,9 +234,9 @@ function type(d) {
 		data.forEach(function(obj) {
 			svg_veggies.append("rect")
 						.attr("x", xscale(obj.Country) +x_pad)
-						.attr("y", yscale_veg(obj.Vegetables))
+						.attr("y", yscale_veg(obj.Vegetables) + padding)
 						.attr("width", 15)
-						.attr("height", yscale_veg(0) - yscale_veg(obj.Vegetables) + padding)
+						.attr("height", yscale_veg(0) - yscale_veg(obj.Vegetables) )
 						.style("fill", veg_colors[0])
 						.style("stroke", "#ccc")
 						.style("stroke-width", "1");
@@ -250,9 +250,9 @@ function type(d) {
 		data.forEach(function(obj){
 			svg_fruits.append("rect")
 						.attr("x", xscale(obj.Country) + x_pad)
-						.attr("y", yscale_fruit(obj.Fruit))
+						.attr("y", yscale_fruit(obj.Fruit) + padding)
 						.attr("width", 15)
-						.attr("height", yscale_fruit(0) - yscale_fruit(obj.Fruit) + padding)
+						.attr("height", yscale_fruit(0) - yscale_fruit(obj.Fruit))
 						.style("fill", fruit_colors[0])
 						.style("stroke", "#ccc")
 						.style("stroke-width", "1");
@@ -272,17 +272,17 @@ function type(d) {
 			var jsonRects = [
 							{
 								"x1": xscale(obj.Country) + x_pad, 
-								"y1": yscale_oil(obj.Palm_Oil + obj.Sugars + obj.Coconut_Oil),
+								"y1": yscale_oil(obj.Palm_Oil + obj.Sugars + obj.Coconut_Oil) + padding,
 								"width1": 15, 
-								"height1": yscale_oil(0) - yscale_oil(obj.Palm_Oil + obj.Sugars + obj.Coconut_Oil) + padding, 
+								"height1": yscale_oil(0) - yscale_oil(obj.Palm_Oil + obj.Sugars + obj.Coconut_Oil), 
 								"fill1": oil_colors[1]
 							},
 							{
 								"x1": xscale(obj.Country) + x_pad, 
-								"y1": yscale_oil(obj.Soybean_Oil + obj.Olive_Oil + obj.Vegetable_Oil),
+								"y1": yscale_oil(obj.Soybean_Oil + obj.Olive_Oil + obj.Vegetable_Oil) + padding,
 								"width1": 15, 
-								"height1": yscale_oil(0) - yscale_oil(obj.Soybean_Oil+ obj.Olive_Oil + obj.Vegetable_Oil) + padding , 
-								"fill1": oil_colors[2]}
+								"height1": yscale_oil(0) - yscale_oil(obj.Soybean_Oil+ obj.Olive_Oil + obj.Vegetable_Oil), 
+								"fill1": oil_colors[0]}
 								];
 
 			//Sort rectangles by height
@@ -316,17 +316,17 @@ function type(d) {
 		data.forEach(function(obj){
 			svg_milk.append("rect")
 					.attr("x", xscale(obj.Country) + x_pad)
-					.attr("y", yscale_milk(obj.Milk))
+					.attr("y", yscale_milk(obj.Milk) + padding)
 					.attr("width", 15)
-					.attr("height", yscale_milk(0) - yscale_milk(obj.Milk) + padding)
+					.attr("height", yscale_milk(0) - yscale_milk(obj.Milk))
 					.style("fill", milk_colors[0])
 					.style("stroke", "#ccc")
 					.style("stroke-width", "1");
 			svg_milk.append("rect")
 					.attr("x", xscale(obj.Country) + x_pad)
-					.attr("y", yscale_milk(obj.Cheese))
+					.attr("y", yscale_milk(obj.Cheese) + padding)
 					.attr("width", 15)
-					.attr("height", yscale_milk(0) - yscale_milk(obj.Cheese) + padding)
+					.attr("height", yscale_milk(0) - yscale_milk(obj.Cheese))
 					.style("fill", milk_colors[1])
 					.style("stroke", "#ccc")
 					.style("stroke-width", "1");
@@ -342,30 +342,30 @@ function type(d) {
 			var proteinJsonRects = [
 							{ 
 								"x1": xscale(obj.Country) + x_pad, 
-								"y1": yscale_protein(obj.Meat),
+								"y1": yscale_protein(obj.Meat) + padding,
 								"width1": 15, 
-								"height1": yscale_protein(0) - yscale_protein(obj.Meat) + padding, 
+								"height1": yscale_protein(0) - yscale_protein(obj.Meat) , 
 								"fill1": protein_colors[0] 
 							},
 							{ 
 								"x1": xscale(obj.Country) + x_pad, 
-								"y1": yscale_protein(obj.Eggs),
+								"y1": yscale_protein(obj.Eggs) + padding,
 								"width1": 15, 
-								"height1": yscale_protein(0) - yscale_protein(obj.Eggs) + padding, 
+								"height1": yscale_protein(0) - yscale_protein(obj.Eggs) , 
 								"fill1": protein_colors[1] 
 							},
 							{ 
 								"x1": xscale(obj.Country) + x_pad, 
-								"y1": yscale_protein(obj.Nuts),
+								"y1": yscale_protein(obj.Nuts) + padding,
 								"width1": 15, 
-								"height1": yscale_protein(0) - yscale_protein(obj.Nuts) + padding, 
+								"height1": yscale_protein(0) - yscale_protein(obj.Nuts) , 
 								"fill1": protein_colors[2] 
 							},
 							{ 
 								"x1": xscale(obj.Country) + x_pad, 
-								"y1": yscale_protein(obj.Fish),
+								"y1": yscale_protein(obj.Fish) + padding,
 								"width1": 15, 
-								"height1": yscale_protein(0) - yscale_protein(obj.Fish) + padding, 
+								"height1": yscale_protein(0) - yscale_protein(obj.Fish), 
 								"fill1": protein_colors[3] 
 							}
 								];
