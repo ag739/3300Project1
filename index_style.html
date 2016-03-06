@@ -17,7 +17,7 @@
 		var veg_colors = ["#98e698"];
 		var fruit_colors = ["#ff9999"];
 		var oil_colors = ["ffeb99", "#e6e600","#ffffcc"];
-		var milk_colors = ["#99ccff"];
+		var milk_colors = ["#99ccff", "ccffff"];
 		var protein_colors = ["#ccccff","#cc99ff","#993399", "6666ff"];
 		
 
@@ -54,7 +54,7 @@
 			else if (divID == "Vegetables") { colors = veg_colors; }
 			else if (divID == "Fruits") { colors = fruit_colors; }
 			else if (divID == "Oils") { colors = oil_colors; }
-			else if (divID == "Milk") { colors = milk_colors; }
+			else if (divID == "Dairy") { colors = milk_colors; }
 			else { colors = protein_colors;}
 
 			sampleOrdinal = d3.scale.ordinal().domain(legendData)
@@ -317,9 +317,9 @@ function type(d) {
 		</script>
 	</div>
 
-	<div id = "Milk">
+	<div id = "Dairy">
 		<script> 
-		var svg_milk = createGraph("Milk", ["Milk"],"#00ace6", yscale_milk);
+		var svg_milk = createGraph("Dairy", ["Milk", "Cheese"],"#00ace6", yscale_milk);
 		data.forEach(function(obj){
 			svg_milk.append("rect")
 					.attr("x", xscale(obj.Country) + x_pad)
@@ -327,6 +327,14 @@ function type(d) {
 					.attr("width", 15)
 					.attr("height", yscale_milk(0) - yscale_milk(obj.Milk) + padding)
 					.style("fill", milk_colors[0])
+					.style("stroke", "#ccc")
+					.style("stroke-width", "1");
+			svg_milk.append("rect")
+					.attr("x", xscale(obj.Country) + x_pad)
+					.attr("y", yscale_milk(obj.Cheese))
+					.attr("width", 15)
+					.attr("height", yscale_milk(0) - yscale_milk(obj.Cheese) + padding)
+					.style("fill", milk_colors[1])
 					.style("stroke", "#ccc")
 					.style("stroke-width", "1");
 		});
