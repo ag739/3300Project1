@@ -78,7 +78,7 @@
 		}
 		/* Makes graphs */
 		function createGraph(divID, legendData, titleColor, yscale) {
-			var height = 650, width = 1000;
+			var height = 630, width = 1000;
 			
 			//Container
 			var svg_container = d3.select("#" + divID).append("svg")
@@ -124,8 +124,15 @@
                   .attr("stop-color", "#660000")
                   .attr("stop-opacity", 1);
       svg_container.append("rect")
-        .attr("x", 125).attr("y", 570).attr("width", 725).attr("height", 15).attr("fill", "url(#grad1)");
-      svg_container.append("text").attr("x", 853).attr("y", 583).text("BMI scale");
+                  .attr("x", 125)
+                  .attr("y", 610)
+                  .attr("width", 725)
+                  .attr("height", 15)
+                  .attr("fill", "url(#grad1)");
+      svg_container.append("text")
+                  .attr("x", 853)
+                  .attr("y", 623)
+                  .text("BMI scale");
 
 			//Axes
 			var xaxis = d3.svg.axis().scale(xscale)
@@ -171,7 +178,7 @@
 			//Country
 			svg_container.append("text")
 							.attr("x", range/2 + x_padding)
-							.attr("y",610)
+							.attr("y",590)
 							.style("text-anchor", "middle")
 							.text("Country")
 							.style("font-size",18);
@@ -231,6 +238,8 @@
 	  		stroke: #ccc;
 	  		shape-rendering: crispEdges;
   		}	
+    #tab { display:inline-block; 
+       margin-left: 40px; }
 	</style>
 
 </head>
@@ -246,6 +255,7 @@
     <br><br><i>A few notes on the data:</i>
     <ul>
       <li>On the calorie intake charts, countries are ordered by ascending BMI, as indicated by the gradient color scale (similar to the scale that appears on the map).</li>
+      <li>For charts where there are multicolored (stacked) bars, this means that the food all start on the x axis at 0 kcal/day and are overlayed (not stacked on top of one another). To be clear, this means that to acquire the <i>total</i> intake of grains, you would need to stack all bar on top of each other. Currently, you are just looking at the <i>relative</i> amounts</li>
       <li>Although the food pyramid was discontinued in 2011, the data we gathered is from 2010, so we figured it is an appropriate way to represent our data.</li>
       <li> Calories are represented in kcalories (as is standard practice)</li>
 		  <li>Food pyramid image and breakdown is based off of <a href="https://en.wikipedia.org/wiki/MyPyramid" target="_blank">this source</a>.</li>
@@ -1062,14 +1072,17 @@
 				bmi_32_34.push(bmi_dataset[i]);
 			}
 		}
-		//legend
+		//Map Legend
 		var legend_width = 420,
 		legend_height = 40,
 		section_width = 50,
 		section_height = 20;
+    //SVG container
 		var svg2 = d3.select("#legend").append("svg")
 			.attr("width", legend_width)
 			.attr("height", legend_height);
+
+    //Color scale
 		svg2.append("rect")
 			.style("stroke", "#fff")
 			.style("fill", "#ffcccc")
@@ -1126,6 +1139,8 @@
 			.attr("width", section_width)
 			.attr("x", 350)
 			.attr("y", 0);
+
+    //Labels
 		svg2.append("text")
 	    	.attr("class", "scale")
     		.attr("x", 0)
@@ -1166,6 +1181,7 @@
     		.attr("x", 350)
 	    	.attr("y", 35)
     		.text("no data");
+
 		//map
 		var map_width = 1255,
     	map_height = 606;
@@ -1251,6 +1267,7 @@
           .style("stroke", "#ccc")
           .style("stroke-width", "1");
       });
+
     //Adding average comparison line
     var avg_female = 2000
     var avg_male = 2600
@@ -1286,6 +1303,12 @@
               .text("Recommended: Adult Female")
               .style("font-size",10);
     </script>
+    <!-- Explanation -->
+    <span id="tab">
+    <br>The above chart shows the average total caloric intake (in kcal) per day for each of 31 different countries around the world. The blue and pink lines represent the U.S. recommended daily caloric intakes for adult males and females respectively. These countries are in ascending order for BMI. <br>
+    <br> As you can see, there is a slight correlation between a higher BMI and overall greater caloric intake. Of course, we note that there are many other factors that affect BMI, such as exercise and medical conditions. More subtle factors that affect BMI include muscle mass (more muscle results in a higher BMI), height (BMI can be overestimate obesity for shorter people and underestimate obesity for taller people), and ethnicity (asians tend to have more body fat at any given BMI and thus obesity may need to be defined at a lower weight).<br>
+    <br>Hence, although food intake does play a role in BMI, there are other factors to also consider. Continue scrolling for a breakdown of food intake by category. <br><br>
+  </span>
   </div>
 
 	<div id = "Grains">
@@ -1312,6 +1335,11 @@
 						.style("stroke-width", "1");
 		});
 		</script>
+
+    <!-- Explanation -->
+    <span id="tab">
+      <br>Via the food pyramid, it is recommended in the United States to consume 6-11 servings of grains a day (out of 13-26 servings in total per day).<br><br>
+    </span>
 	</div>
 
 	<div id = "Vegetables">
@@ -1330,6 +1358,11 @@
 		});
 
 		</script>
+    <!-- Explanation -->
+    <span id="tab">
+      <br>Via the food pyramid, it is recommended in the United States to consume 3-5 servings of vegetables a day (out of 13-26 servings in total per day).
+      As a caviat, it is generally accepted that as far as vegetables go, the more the merrier!<br><br>
+    </span>
 	</div>
 
 	<div id = "Fruits">
@@ -1346,6 +1379,10 @@
 						.style("stroke-width", "1");
 		});
 		</script>
+    <!-- Explanation -->
+    <span id="tab">
+      <br>Via the food pyramid, it is recommended in the United States to consume 2-4 servings of fruit a day (out of 13-26 servings in total per day).<br><br>
+    </span>
 	</div>
 
 	<div id = "Oils">
@@ -1395,6 +1432,10 @@
 						.style("stroke-width", "1");
 		});
 		</script>
+    <!-- Explanation -->
+    <span id="tab">
+      <br>Via the food pyramid, it is recommended in the United States to consume "fats, oils, and sweets" sparingly. Saturated fats, such as palm oil, coconut oil, and sugar, are unhealthy and should be avoided, while unsaturated fats, such as olive oil, vegetable oil, and soybean oil, are fine in smaller quantities. <br><br>
+    </span>
 
 	</div>
 
@@ -1420,6 +1461,11 @@
 					.style("stroke-width", "1");
 		});
 		</script>
+    <!-- Explanation -->
+    <span id="tab">
+      <br>Via the food pyramid, it is recommended in the United States to consume 2-3 servings of dairy a day (out of 13-26 servings in total per day).
+      *It is important to note that dairy (especially dairy of the non-milk variety) is a food group that is not consumed in some cultures, which can cause discrepencies.* <br><br>
+    </span>
 	</div>
 
 	<div id = "Protein">
@@ -1480,6 +1526,12 @@
 						.style("stroke-width", "1");
 		});
 		</script>
+    <!-- Explanation -->
+    <span id="tab">
+      <br>Via the food pyramid, it is recommended in the United States to consume 2-3 servings of protein a day (out of 13-26 servings in total per day). As you can see, most countries consume meat as their primary source of protein, and there are differentiations between the order of the remaining three categories depending on the country. 
+      <br><br>
+    </span>
 	</div>
+
 </body>
 </html>
