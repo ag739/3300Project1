@@ -84,6 +84,27 @@
 							.attr("height", height);
 							// .style("border", " 1px solid #ccc");
 
+      // BMI Color Scale
+      var gradient = svg_container.append("defs")
+                      .append("linearGradient")
+                      .attr("id", "grad1")
+                      .attr("x1", "0%")
+                      .attr("x2", "100%")
+                      .attr("y1", "0%")
+                      .attr("y2", "0%")
+                      .attr("spreadMethod", "pad");
+      gradient.append("stop")
+                  .attr("offset", "0%")
+                  .attr("stop-color", "#ffcccc")
+                  .attr("stop-opacity", 1);
+      gradient.append("stop")
+                  .attr("offset", "100%")
+                  .attr("stop-color", "#660000")
+                  .attr("stop-opacity", 1);
+      svg_container.append("rect")
+        .attr("x", 125).attr("y", 570).attr("width", 725).attr("height", 15).attr("fill", "url(#grad1)");
+      svg_container.append("text").attr("x", 853).attr("y", 583).text("BMI scale");
+
 			//Axes
 			var xaxis = d3.svg.axis().scale(xscale)
 						.orient("bottom")
@@ -198,6 +219,7 @@
 		We're looking at countries' food intake, based on the daily recommended values for each food group, to see if there's a relationship between that and BMI.
 		Although the food pyramid was discontinued in 2011, the data we gathered is from 2010, so we figured it is an okay way to represent our data.
 		Before the charts, you'll see a map that shows what the average BMI of every country* around the world.
+    <br>Countries are ordered by ascending BMI on the charts below, as indicated by the gradient color scale (similar to the scale that appears on the map).
 		<br>Food pyramid image found <a href="https://en.wikipedia.org/wiki/MyPyramid" target="_blank">here</a>.
 		<br>Note: "daily recommended values" based on US statistics from <a href="http://health.gov/dietaryguidelines/dga2010/dietaryguidelines2010.pdf" target="_blank"> here</a>.
 		<br><span style="color: rgb(51, 133, 255); opacity: 0.5;">This color</span> indicates male averages, while <span style="color: rgb(255, 128, 223); opacity: 0.5; ">this color</span> indicates female averages.
