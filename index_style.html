@@ -1,4 +1,6 @@
-<!-- Kelly O'Shaughessy kao58,
+<!-- Kelly O'Shaughessy kao58, 
+     Ariel Gleitman ag739, 
+     Crystal Liu crl95
 	-->
 <!DOCTYPE html>
 <html>
@@ -162,7 +164,7 @@
 						.attr("xlink:href", "img/" + divID.toLowerCase() + ".png")
 					    .attr("width", 300)
 					    .attr("height", 232)
-					    .attr("x", 875)
+					    .attr("x", 1000)
 					    .attr("y",height/2 - 232/2);
 
 			//Labels:
@@ -234,16 +236,23 @@
 </head>
 <body>
 
-	<h1>Food Intake by Country</h1>
-	<p>Ever wonder how food intake, based on what our "daily recommended values", relates to average BMI?
-		We're looking at countries' food intake, based on the daily recommended values for each food group, to see if there's a relationship between that and BMI.
-		Although the food pyramid was discontinued in 2011, the data we gathered is from 2010, so we figured it is an okay way to represent our data.
-		Before the charts, you'll see a map that shows what the average BMI of every country* around the world.
-    <br>Countries are ordered by ascending BMI on the charts below, as indicated by the gradient color scale (similar to the scale that appears on the map).
-		<br>Food pyramid image found <a href="https://en.wikipedia.org/wiki/MyPyramid" target="_blank">here</a>.
-		<br>Note: "daily recommended values" based on US statistics from <a href="http://health.gov/dietaryguidelines/dga2010/dietaryguidelines2010.pdf" target="_blank"> here</a>.
-		<br><span style="color: rgb(51, 133, 255); opacity: 0.5;">This color</span> indicates male averages, while <span style="color: rgb(255, 128, 223); opacity: 0.5; ">this color</span> indicates female averages.
-		<br><br>*some countries not represented
+	<h1><u>Body Mass Indices & Food Intake by Country</u></h1>
+	<p>
+    <i>Created for CS 3300 Project 1 by Kelly O'Shaughessy (kao58), Ariel Gleitman (ag739), and Crystal Liu (crl95). </i><br><br>
+    Ever wonder how food intake, based on what our "daily recommended values", relates to average Body Mass Index (BMI)?
+		In the following visualizations, we are looking at countries' food intake, based on the daily recommended values for each food group, to see if there is a relationship between that and BMI.<br><br>
+    We represent this correlation using two different types of visualizations. First, we have a world map that shows the average BMI per country (for the available countries with BMI data). We then move to looking at calorie consumption for a subset of these countries, noting both the overall average calorie intake per day, and breaking down the intake by food group as separated by the food pyramid.
+		
+    <br><br><i>A few notes on the data:</i>
+    <ul>
+      <li>On the calorie intake charts, countries are ordered by ascending BMI, as indicated by the gradient color scale (similar to the scale that appears on the map).</li>
+      <li>Although the food pyramid was discontinued in 2011, the data we gathered is from 2010, so we figured it is an appropriate way to represent our data.</li>
+      <li> Calories are represented in kcalories (as is standard practice)</li>
+		  <li>Food pyramid image and breakdown is based off of <a href="https://en.wikipedia.org/wiki/MyPyramid" target="_blank">this source</a>.</li>
+		  <li>Note: "daily recommended values" based on US statistics from <a href="http://health.gov/dietaryguidelines/dga2010/dietaryguidelines2010.pdf" target="_blank"> here</a>.</li>
+		  <li><span style="color: rgb(51, 133, 255); opacity: 0.5;">This color</span> indicates male averages, while <span style="color: rgb(255, 128, 223); opacity: 0.5; ">this color</span> indicates female averages.</li>
+		  <li>Some countries not represented on the map due to a lack of data. As noted, these countries are gray.</li>
+  </ul>
 
 		<div id = "BMI">
 		
@@ -1242,7 +1251,7 @@
           .style("stroke", "#ccc")
           .style("stroke-width", "1");
       });
-    //adding average comparison line
+    //Adding average comparison line
     var avg_female = 2000
     var avg_male = 2600
     //female 14 - 50
@@ -1263,6 +1272,19 @@
         .style("stroke", "3385ff")
         .style("opacity", "0.5")
         .style("stroke-width", "1.5");
+    //labels
+    svg_total.append("text")
+              .attr("x", 851)
+              .attr("y",padding + yscale_total(avg_male)+3)
+              .style("text-anchor", "left")
+              .text("Recommended: Adult Male")
+              .style("font-size",10);
+    svg_total.append("text")
+              .attr("x", 851)
+              .attr("y",padding + yscale_total(avg_female)+3)
+              .style("text-anchor", "left")
+              .text("Recommended: Adult Female")
+              .style("font-size",10);
     </script>
   </div>
 
