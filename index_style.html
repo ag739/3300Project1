@@ -132,6 +132,7 @@
 							.text("Country")
 							.style("font-size",18);
 			//Intake
+<<<<<<< HEAD
 			svg_container.append("text")
 							.attr("x", -300).attr("y",40)
 							.style("text-anchor", "middle")
@@ -142,6 +143,18 @@
 			svg_container.append("text")
 							.attr("x", -230).attr("y",40)
 							.style("text-anchor", "middle")
+=======
+			svg_container.append("text")
+							.attr("x", -300).attr("y",40)
+							.style("text-anchor", "middle")
+							.text("Intake")
+							.attr("transform", "rotate(-90)")
+							.style("font-size", 18);
+			//unit
+			svg_container.append("text")
+							.attr("x", -230).attr("y",40)
+							.style("text-anchor", "middle")
+>>>>>>> master
 							.text("(kcal/day)")
 							.attr("transform", "rotate(-90)")
 							.style("font-size", 14);
@@ -196,11 +209,17 @@
 	<p>Ever wonder how food intake, based on what our "daily recommended values", relates to average BMI?
 		We're looking at countries' food intake, based on the daily recommended values for each food group, to see if there's a relationship between that and BMI.
 		Although the food pyramid was discontinued in 2011, the data we gathered is from 2010, so we figured it is an okay way to represent our data.
+<<<<<<< HEAD
 		At the bottom of the page, you'll see a map that shows what the average BMI of every country* around the world.
 		<br>Food pyramid image found <a href="https://en.wikipedia.org/wiki/MyPyramid" target="_blank">here</a>.
 		<br>Note: "daily recommended values" based on US statistics from <a href="http://health.gov/dietaryguidelines/dga2010/dietaryguidelines2010.pdf" target="_blank"> here</a>.
 		<br><span style="color: rgb(51, 133, 255); opacity: 0.5;">This color</span> indicates male averages, while <span style="color: rgb(255, 128, 223); opacity: 0.5; ">this color</span> indicates female averages.
 		<br><br>*some countries not represented
+=======
+		<br>Food pyramid image found <a href="https://en.wikipedia.org/wiki/MyPyramid" target="_blank">here</a>.
+		<br>Note: "daily recommended values" based on US statistics from <a href="http://health.gov/dietaryguidelines/dga2010/dietaryguidelines2010.pdf" target="_blank"> here</a>.
+		<br><span style="color: rgb(51, 133, 255); opacity: 0.5;">This color</span> indicates male averages, while <span style="color: rgb(255, 128, 223); opacity: 0.5; ">this color</span> indicates female averages.
+>>>>>>> master
 	</p>
 	<div id = "Grains">
 		<script>
@@ -354,6 +373,7 @@
 				.style("stroke-width", "1.5");
 
 		</script>
+<<<<<<< HEAD
 	</div>
 
 	<div id = "Dairy">
@@ -462,6 +482,116 @@
 		</script>
 	</div>
 
+=======
+	</div>
+
+	<div id = "Dairy">
+		<script> 
+		var svg_milk = createGraph("Dairy", ["Milk", "Cheese"],"#00ace6", yscale_milk);
+		data.forEach(function(obj){
+			svg_milk.append("rect")
+					.attr("x", xscale(obj.Country) + x_pad)
+					.attr("y", yscale_milk(obj.Milk) + padding)
+					.attr("width", 15)
+					.attr("height", yscale_milk(0) - yscale_milk(obj.Milk))
+					.style("fill", milk_colors[0])
+					.style("stroke", "#ccc")
+					.style("stroke-width", "1");
+			svg_milk.append("rect")
+					.attr("x", xscale(obj.Country) + x_pad)
+					.attr("y", yscale_milk(obj.Cheese) + padding)
+					.attr("width", 15)
+					.attr("height", yscale_milk(0) - yscale_milk(obj.Cheese))
+					.style("fill", milk_colors[1])
+					.style("stroke", "#ccc")
+					.style("stroke-width", "1");
+		});
+		</script>
+	</div>
+
+	<div id = "Protein">
+		<script> 
+		var svg_meat = createGraph("Protein", ["Meat", "Eggs", "Nuts", "Fish"],"#6600cc",yscale_protein);
+
+		data.forEach( function(obj){
+			var proteinJsonRects = [
+							{ 
+								"x1": xscale(obj.Country) + x_pad, 
+								"y1": yscale_protein(obj.Meat) + padding,
+								"width1": 15, 
+								"height1": yscale_protein(0) - yscale_protein(obj.Meat) , 
+								"fill1": protein_colors[0] 
+							},
+							{ 
+								"x1": xscale(obj.Country) + x_pad, 
+								"y1": yscale_protein(obj.Eggs) + padding,
+								"width1": 15, 
+								"height1": yscale_protein(0) - yscale_protein(obj.Eggs) , 
+								"fill1": protein_colors[1] 
+							},
+							{ 
+								"x1": xscale(obj.Country) + x_pad, 
+								"y1": yscale_protein(obj.Nuts) + padding,
+								"width1": 15, 
+								"height1": yscale_protein(0) - yscale_protein(obj.Nuts) , 
+								"fill1": protein_colors[2] 
+							},
+							{ 
+								"x1": xscale(obj.Country) + x_pad, 
+								"y1": yscale_protein(obj.Fish) + padding,
+								"width1": 15, 
+								"height1": yscale_protein(0) - yscale_protein(obj.Fish), 
+								"fill1": protein_colors[3] 
+							}
+								];
+
+			//Sort rectangles by height
+			proteinJsonRects.sort(function (a,b) {
+					if (a.y1 > b.y1) { return 1; }
+					if (a.y1 < b.y1) { return -1; }
+					return 0;
+			});
+
+			var rects = svg_meat.selectAll("proteinJsonRects")
+						.data(proteinJsonRects)
+						.enter()
+						.append("rect");
+
+			var rect_attributes = rects
+						.attr("x", function(d) {return d.x1; })
+						.attr("y", function(d) {return d.y1;})
+						.attr("width", function(d) {return d.width1;})
+						.attr("height", function(d) {return d.height1;})
+						.style("fill", function(d) { return d.fill1; })
+						.style("stroke", "#ccc")
+						.style("stroke-width", "1");
+		});
+
+		//adding average comparison line
+		var avg_female = 350;
+		var avg_male = 585;
+		//female 14 - 50
+		svg_meat.append("line")
+				.attr("x1", 2*padding + 20)
+				.attr("y1", padding + yscale_protein(avg_female))
+				.attr("x2", 850)
+				.attr("y2", padding + yscale_protein(avg_female))
+				.style("stroke", "ff80df")
+				.style("opacity", "0.5")
+				.style("stroke-width", "1.5");
+		//male 14 - 50
+		svg_meat.append("line")
+				.attr("x1", 2*padding + 20)
+				.attr("y1", padding + yscale_protein(avg_male))
+				.attr("x2", 850)
+				.attr("y2", padding + yscale_protein(avg_male))
+				.style("stroke", "3385ff")
+				.style("opacity", "0.5")
+				.style("stroke-width", "1.5");
+		</script>
+	</div>
+
+>>>>>>> master
 		<div id = "Total">
 		<script> 
 		var svg_total = createGraph("Total", ["Total"],"black", yscale_total);

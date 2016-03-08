@@ -20,25 +20,24 @@
 <body>
 	<script>
 		/*Creating x & y scale functions that map data to SVG coordinates*/
-		var xscale = d3.scale.ordinal().domain(["Albania", "Argentina", "Australia", "Austria","Bangladesh","Belarus","Belgium","Bolivia","Bosnia/Herzegovina","Brazil","Bulgaria","Cameroon","Canada","Chile","China","Columbia","Costa Rica","Cyprus","Czech Republic","Denmark","Dominican Republic","Ecuador","Egypt","Estonia","Ethiopia","Fiji","Finland","Gambia"])
-			.rangePoints([125, 775]);
+		//Thinking that we could split the companies up by region
+		var xscale = d3.scale.ordinal().domain(["Argentina", "Australia","Brazil","Canada","Chile","China","Columbia","Czech Republic","Denmark","Dominican Republic","Egypt","Ethiopia","Finland","Germany","Ghana","Greece","Haiti","Iceland","India","Iran","Israel","Italy","Jamaica","Japan","Kenya","Malaysia","Mexico","Morocco","Netherlands","New Zealand","Nigeria","Pakistan","Peru","Poland"])
+			.rangePoints([125, 1175]);
 
-		var yscale = d3.scale.linear().range([50, 450]);
+		var yscale = d3.scale.linear().range([450, 50]);
 
 		/* Creating shapes */
 		//Data
 
 		//Container
 		var svg_container = d3.select("body").append("svg")
-						.attr("width", 1000)
+						.attr("width", 1300)
 						.attr("height", 650);
 						
 
 		/*Add d3 axes */
 		var xaxis = d3.svg.axis().scale(xscale)
 					.orient("bottom")
-					//(["Albania", "Argentina", "Australia", "Austria",
-					// 	"Bangladesh","Belarus","Belgium","Bolivia","Bosnia/Herzegovina","Brazil","Bulgaria","Cameroon","Canada","Chile","China","Columbia","Costa Rica","Cyprus","Czech Republic","Denmark","Dominican Republic","Ecuador","Egypt","Estonia","Ethiopia","Fiji","Finland","Gambia"])
 					.tickSize(1,1);
 		var yaxis = d3.svg.axis().scale(yscale)
 					.orient("left")
@@ -51,7 +50,7 @@
 					.call(xaxis)
 					.selectAll("text")
 						.style("text-anchor","end")
-						.style("font-size","10")
+						.style("font-size","12")
 						.attr("dx","-.8em")
 						.attr("dy",".15em")
 						.attr("transform","rotate(-65)");
@@ -62,17 +61,18 @@
 
 		//Labels
 		svg_container.append("text")
-						.attr("x", 450).attr("y",620)
+						.attr("x", 625).attr("y",620)
 						.style("text-anchor", "middle")
 						.text("Country")
 						.style("font-size",14);
 		svg_container.append("text")
-						.attr("x", 60).attr("y",80)
+						.attr("x", -300).attr("y",40)
 						.style("text-anchor", "middle")
 						.text("Intake (kcal/day)")
+						.attr("transform", "rotate(-90)")
 						.style("font-size", 14);
 		svg_container.append("text")
-						.attr("x", 450).attr("y",30)
+						.attr("x", 625).attr("y",30)
 						.style("text-anchor", "middle")
 						.text("Title")
 						.style("font-size", 25)
@@ -80,25 +80,23 @@
 		// //Legend
 		function legendGraph() {
 		legendData = ["Sugars", "Olive Oil", "Palm Oil", "Soybean Oil", "Vegetable Oil"]
-		sampleOrdinal = d3.scale.category20().domain(legendData);
+		sampleOrdinal = d3.scale.ordinal()
+						.domain(legendData)
+						.range(["#ff9999","#ffcc99","#ffff99","#b3ff99","#99ffe6"]);
 		legendGraph = d3.svg.legend().labelFormat("none")
-				.cellPadding(5)
-				.orientation("vertical")
-				.units("Ingredient")
-				.cellWidth(25)
-				.cellHeight(18)
-				.inputScale(sampleOrdinal)
-				.cellStepping(10);
-		d3.select("svg").append("g").attr("transform", "translate(820,200)").attr("class", "legend").call(legendGraph);
-	}
-		svg_container.append("g").call(legendGraph());
+					.cellPadding(5)
+					.orientation("vertical")
+					.units("Ingredient")
+					.cellWidth(25)
+					.cellHeight(18)
+					.inputScale(sampleOrdinal)
+					.cellStepping(10);
 
-
-		// var legend = d3.svg.legend()
-		// svg_container.append("g")
-		// 			.attr("class","legend")
-		// 			.attr("transform","translate(900,150)")
-		// 			.call(legend)
+		d3.select("svg").append("g")
+				.attr("transform", "translate(1200,200)")
+				.attr("class", "legend").call(legendGraph);
+		}
+		legendGraph();
 
 	</script>
 
