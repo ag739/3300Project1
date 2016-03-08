@@ -19,7 +19,8 @@ var data =
     "Fruit": 121,
     "Vegetables": 67,
     "Carbohydrates": 1486,
-    "Wheat": 559
+    "Wheat": 559,
+    "BMI": 26.9
   },
   {
     "Country": "Brazil",
@@ -40,7 +41,8 @@ var data =
     "Fruit": 112,
     "Vegetables": 29,
     "Carbohydrates": 1891,
-    "Wheat": 388
+    "Wheat": 388,
+    "BMI": 25.6
   },
   {
     "Country": "Canada",
@@ -61,7 +63,8 @@ var data =
     "Fruit": 113,
     "Vegetables": 88,
     "Carbohydrates": 1843,
-    "Wheat": 642
+    "Wheat": 642,
+    "BMI": 27
   },
   {
     "Country": "China",
@@ -82,7 +85,8 @@ var data =
     "Fruit": 56,
     "Vegetables": 168,
     "Carbohydrates": 1802,
-    "Wheat": 448
+    "Wheat": 448,
+    "BMI": 23.4
   },
   {
     "Country": "Egypt",
@@ -103,7 +107,8 @@ var data =
     "Fruit": 154,
     "Vegetables": 107,
     "Carbohydrates": 2456,
-    "Wheat": 1046
+    "Wheat": 1046,
+    "BMI": 28.7
   },
   {
     "Country": "France",
@@ -124,7 +129,8 @@ var data =
     "Fruit": 88,
     "Vegetables": 103,
     "Carbohydrates": 1638,
-    "Wheat": 732
+    "Wheat": 732,
+    "BMI": 25.2
   },
   {
     "Country": "Germany",
@@ -145,7 +151,8 @@ var data =
     "Fruit": 135,
     "Vegetables": 65,
     "Carbohydrates": 1821,
-    "Wheat": 643
+    "Wheat": 643,
+    "BMI": 26.1
   },
   {
     "Country": "Haiti",
@@ -166,7 +173,8 @@ var data =
     "Fruit": 123,
     "Vegetables": 17,
     "Carbohydrates": 1560,
-    "Wheat": 324
+    "Wheat": 324,
+    "BMI": 23.6
   },
   {
     "Country": "India",
@@ -187,7 +195,8 @@ var data =
     "Fruit": 48,
     "Vegetables": 44,
     "Carbohydrates": 1744,
-    "Wheat": 542
+    "Wheat": 542,
+    "BMI": 21.6
   },
   {
     "Country": "Indonesia",
@@ -208,7 +217,8 @@ var data =
     "Fruit": 63,
     "Vegetables": 26,
     "Carbohydrates": 2075,
-    "Wheat": 124
+    "Wheat": 124,
+    "BMI": 22.5
   },
   {
     "Country": "Iran",
@@ -229,7 +239,8 @@ var data =
     "Fruit": 225,
     "Vegetables": 98,
     "Carbohydrates": 2209,
-    "Wheat": 1468
+    "Wheat": 1468,
+    "BMI": 25.9
   },
   {
     "Country": "Italy",
@@ -250,7 +261,8 @@ var data =
     "Fruit": 160,
     "Vegetables": 107,
     "Carbohydrates": 1805,
-    "Wheat": 1075
+    "Wheat": 1075,
+    "BMI": 25.9
   },
   {
     "Country": "Japan",
@@ -271,7 +283,8 @@ var data =
     "Fruit": 52,
     "Vegetables": 74,
     "Carbohydrates": 1628,
-    "Wheat": 363
+    "Wheat": 363,
+    "BMI": 22.6
   },
   {
     "Country": "Madagascar",
@@ -292,7 +305,8 @@ var data =
     "Fruit": 58,
     "Vegetables": 11,
     "Carbohydrates": 1591,
-    "Wheat": 38
+    "Wheat": 38,
+    "BMI": 20.9
   },
   {
     "Country": "Mexico",
@@ -313,7 +327,8 @@ var data =
     "Fruit": 117,
     "Vegetables": 38,
     "Carbohydrates": 2015,
-    "Wheat": 273
+    "Wheat": 273,
+    "BMI": 27.8
   },
   {
     "Country": "Mongolia",
@@ -334,7 +349,8 @@ var data =
     "Fruit": 15,
     "Vegetables": 13,
     "Carbohydrates": 1178,
-    "Wheat": 891
+    "Wheat": 891,
+    "BMI": 25.4
   },
   {
     "Country": "Nigeria",
@@ -355,7 +371,8 @@ var data =
     "Fruit": 84,
     "Vegetables": 43,
     "Carbohydrates": 1889,
-    "Wheat": 126
+    "Wheat": 126,
+    "BMI": 23.1
   },
   {
     "Country": "Pakistan",
@@ -376,7 +393,8 @@ var data =
     "Fruit": 45,
     "Vegetables": 24,
     "Carbohydrates": 1483,
-    "Wheat": 871
+    "Wheat": 871,
+    "BMI": 23.4
   },
   {
     "Country": "Paraguay",
@@ -397,7 +415,8 @@ var data =
     "Fruit": 66,
     "Vegetables": 33,
     "Carbohydrates": 1471,
-    "Wheat": 143
+    "Wheat": 143,
+    "BMI": 25.4
   },
   {
     "Country": "Peru",
@@ -418,7 +437,8 @@ var data =
     "Fruit": 135,
     "Vegetables": 43,
     "Carbohydrates": 1070,
-    "Wheat": 349
+    "Wheat": 349,
+    "BMI": 25.9
   },
   {
     "Country": "Russia",
@@ -439,7 +459,8 @@ var data =
     "Fruit": 60,
     "Vegetables": 66,
     "Carbohydrates": 1969,
-    "Wheat": 1027
+    "Wheat": 1027,
+    "BMI": 26.2
   },
   {
     "Country": "Saudi Arabia",
@@ -460,7 +481,8 @@ var data =
     "Fruit": 221,
     "Vegetables": 63,
     "Carbohydrates": 1778,
-    "Wheat": 763
+    "Wheat": 763,
+    "BMI": 28.1
   },
   {
     "Country": "South Africa",
@@ -481,7 +503,8 @@ var data =
     "Fruit": 44,
     "Vegetables": 36,
     "Carbohydrates": 1948,
-    "Wheat": 371
+    "Wheat": 371,
+    "BMI": 26.9
   },
   {
     "Country": "Spain",
@@ -502,7 +525,8 @@ var data =
     "Fruit": 135,
     "Vegetables": 96,
     "Carbohydrates": 1572,
-    "Wheat": 644
+    "Wheat": 644,
+    "BMI": 26.6
   },
   {
     "Country": "Sweden",
@@ -523,7 +547,8 @@ var data =
     "Fruit": 111,
     "Vegetables": 56,
     "Carbohydrates": 1607,
-    "Wheat": 609
+    "Wheat": 609,
+    "BMI": 25.6
   },
   {
     "Country": "Thailand",
@@ -544,7 +569,8 @@ var data =
     "Fruit": 107,
     "Vegetables": 34,
     "Carbohydrates": 1714,
-    "Wheat": 83
+    "Wheat": 83,
+    "BMI": 23.8
   },
   {
     "Country": "Turkey",
@@ -565,7 +591,8 @@ var data =
     "Fruit": 136,
     "Vegetables": 138,
     "Carbohydrates": 2146,
-    "Wheat": 1392
+    "Wheat": 1392,
+    "BMI": 27.5
   },
   {
     "Country": "Ukraine",
@@ -586,7 +613,8 @@ var data =
     "Fruit": 47,
     "Vegetables": 73,
     "Carbohydrates": 1983,
-    "Wheat": 947
+    "Wheat": 947,
+    "BMI": 25.9
   },
   {
     "Country": "UAE",
@@ -607,7 +635,8 @@ var data =
     "Fruit": 201,
     "Vegetables": 140,
     "Carbohydrates": 1968,
-    "Wheat": 751
+    "Wheat": 751,
+    "BMI": 28.6
   },
   {
     "Country": "U.K.",
@@ -628,7 +657,8 @@ var data =
     "Fruit": 113,
     "Vegetables": 68,
     "Carbohydrates": 1782,
-    "Wheat": 772
+    "Wheat": 772,
+    "BMI": 27
   },
   {
     "Country": "U.S.A.",
@@ -649,6 +679,7 @@ var data =
     "Fruit": 117,
     "Vegetables": 77,
     "Carbohydrates": 1790,
-    "Wheat": 603
+    "Wheat": 603,
+    "BMI": 28.5
   },
 ]

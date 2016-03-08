@@ -21,6 +21,7 @@
 		var protein_colors = ["#ccccff","#cc99ff","#993399", "6666ff"];
 		var total_colors = ["#d1d1e0"];
 
+		data.sort(function(a, b) { return a.BMI - b.BMI });
 		var countries = [];
 		data.forEach(function(obj) {
 			countries.push(obj.Country);
